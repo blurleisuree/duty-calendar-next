@@ -1,3 +1,5 @@
+import 'virtual:uno.css'
+
 function layout() {
   return (
     <div>

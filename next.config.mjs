@@ -1,4 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import { withUnoCSS } from 'unocss/vite';
 
-export default nextConfig;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  // Дополнительные настройки Next.js, если нужны
+};
+
+export default withUnoCSS(nextConfig);
