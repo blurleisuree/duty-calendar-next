@@ -1,0 +1,83 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["prismaSchemaFolder"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model categories {
+  id   Int    @id @default(autoincrement())
+  name String @unique @db.VarChar(100)
+
+  subcategories subcategories[]
+
+  @@map("categories")
+}
+
+model employees {
+  id              Int           @id @default(autoincrement())
+  full_name       String        @db.VarChar(150)
+  position        String        @db.VarChar(150)
+  organization_id Int
+  organization    organizations @relation(fields: [organization_id], references: [id], onDelete: Restrict)
+
+  phones phones[]
+  shifts shifts[]
+
+  @@unique([full_name, organization_id])
+  @@map("employees")
+}
+
+model organizations {
+  id             Int           @id @default(autoincrement())
+  name           String        @unique @db.VarChar(200)
+  subcategory_id Int
+  subcategory    subcategories @relation(fields: [subcategory_id], references: [id], onDelete: Restrict)
+
+  employees employees[]
+  shifts    shifts[]
+
+  @@map("organizations")
+}
+
+model phones {
+  id           Int       @id @default(autoincrement())
+  employee_id  Int
+  employee     employees @relation(fields: [employee_id], references: [id], onDelete: Cascade)
+  phone_number String    @db.VarChar(50)
+
+  @@unique([employee_id, phone_number])
+  @@map("phones")
+}
+
+model subcategories {
+  id          Int        @id @default(autoincrement())
+  name        String     @db.VarChar(100)
+  category_id Int
+  category    categories @relation(fields: [category_id], references: [id], onDelete: Restrict)
+
+  organizations organizations[]
+
+  @@unique([name, category_id])
+  @@map("subcategories")
+}
+
+model shifts {
+  id              Int           @id @default(autoincrement())
+  employee_id     Int
+  organization_id Int
+  employee        employees     @relation(fields: [employee_id], references: [id], onDelete: Restrict)
+  organization    organizations @relation(fields: [organization_id], references: [id], onDelete: Restrict)
+  shift_date      DateTime      @db.Date
+  start_time      DateTime?     @db.Time
+  end_time        DateTime?     @db.Time
+
+  @@index([shift_date])
+  @@index([employee_id])
+  @@index([organization_id])
+  @@map("shifts")
+}
