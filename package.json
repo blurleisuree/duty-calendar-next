@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "migrate": "prisma migrate dev",
-    "seed": "prisma db seed"
+    "seed": "prisma db seed",
+    "prepare": "husky"
   },
   "dependencies": {
     "@prisma/client": "^6.8.2",
@@ -18,11 +19,14 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3",
     "@unocss/preset-wind4": "^66.1.2",
     "@unocss/vite": "^66.1.2",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
+    "husky": "^9.1.7",
     "prettier": "^3.5.3",
     "unocss": "^66.1.2"
   },
