@@ -1,9 +1,11 @@
-import { withUnoCSS } from 'unocss/vite';
+import unocss from '@unocss/webpack';
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Дополнительные настройки Next.js, если нужны
+  webpack: (config) => {
+    config.plugins.push(unocss());
+    return config;
+  },
 };
 
-export default withUnoCSS(nextConfig);
+export default nextConfig;
