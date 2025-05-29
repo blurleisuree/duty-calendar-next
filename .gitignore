@@ -83,3 +83,7 @@ tmp/
 *.lock
 
 .husky/
+
+.xlsx
+.xls
+exports

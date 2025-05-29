@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["/app*"]
+      "@/*": ["/app*"],
+      "@shared/*": ["/shared/*"],
+      "@server/*": ["/server/*"],
+      "@modules/*": ["/modules/*"],
+      "@assets/*": ["/assets/*"],
+      "@api/*": ["/app/api/*"],
+      "@pages/*": ["/app/(pages)/*"]
     }
   }
 }
