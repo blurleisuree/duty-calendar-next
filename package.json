@@ -22,18 +22,14 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3",
-    "@unocss/postcss": "^66.1.2",
-    "@unocss/preset-uno": "^66.1.2",
-    "@unocss/preset-wind4": "^66.1.2",
-    "@unocss/vite": "^66.1.2",
-    "@unocss/webpack": "^66.1.2",
+    "@tailwindcss/postcss": "^4.1.8",
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "husky": "^9.1.7",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "unocss": "^66.1.2"
+    "tailwindcss": "^4.1.8"
   },
   "type": "module"
 }
