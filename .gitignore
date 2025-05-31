@@ -26,6 +26,9 @@
 /prisma/migrations/*.sql
 /prisma/seed.ts
 
+/generated
+generated
+
 # Production
 /dist
 
@@ -87,3 +90,4 @@ tmp/
 .xlsx
 .xls
 exports
+/exports
