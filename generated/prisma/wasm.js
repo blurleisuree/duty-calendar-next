@@ -135,7 +135,8 @@ exports.Prisma.EmployeesScalarFieldEnum = {
 exports.Prisma.OrganizationsScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  subcategory_id: 'subcategory_id'
+  subcategory_id: 'subcategory_id',
+  category_id: 'category_id'
 };
 
 exports.Prisma.PhonesScalarFieldEnum = {
@@ -157,6 +158,15 @@ exports.Prisma.ShiftsScalarFieldEnum = {
   shift_date: 'shift_date',
   start_time: 'start_time',
   end_time: 'end_time'
+};
+
+exports.Prisma.Duty_officersScalarFieldEnum = {
+  id: 'id',
+  position: 'position',
+  phones: 'phones',
+  category_id: 'category_id',
+  subcategory_id: 'subcategory_id',
+  organization_id: 'organization_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -181,7 +191,8 @@ exports.Prisma.ModelName = {
   organizations: 'organizations',
   phones: 'phones',
   subcategories: 'subcategories',
-  shifts: 'shifts'
+  shifts: 'shifts',
+  duty_officers: 'duty_officers'
 };
 
 /**

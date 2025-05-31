@@ -43,6 +43,11 @@ export type subcategories = $Result.DefaultSelection<Prisma.$subcategoriesPayloa
  * 
  */
 export type shifts = $Result.DefaultSelection<Prisma.$shiftsPayload>
+/**
+ * Model duty_officers
+ * 
+ */
+export type duty_officers = $Result.DefaultSelection<Prisma.$duty_officersPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -228,6 +233,16 @@ export class PrismaClient<
     * ```
     */
   get shifts(): Prisma.shiftsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.duty_officers`: Exposes CRUD operations for the **duty_officers** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Duty_officers
+    * const duty_officers = await prisma.duty_officers.findMany()
+    * ```
+    */
+  get duty_officers(): Prisma.duty_officersDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -673,7 +688,8 @@ export namespace Prisma {
     organizations: 'organizations',
     phones: 'phones',
     subcategories: 'subcategories',
-    shifts: 'shifts'
+    shifts: 'shifts',
+    duty_officers: 'duty_officers'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -692,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "categories" | "employees" | "organizations" | "phones" | "subcategories" | "shifts"
+      modelProps: "categories" | "employees" | "organizations" | "phones" | "subcategories" | "shifts" | "duty_officers"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1140,6 +1156,80 @@ export namespace Prisma {
           }
         }
       }
+      duty_officers: {
+        payload: Prisma.$duty_officersPayload<ExtArgs>
+        fields: Prisma.duty_officersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.duty_officersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.duty_officersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>
+          }
+          findFirst: {
+            args: Prisma.duty_officersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.duty_officersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>
+          }
+          findMany: {
+            args: Prisma.duty_officersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>[]
+          }
+          create: {
+            args: Prisma.duty_officersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>
+          }
+          createMany: {
+            args: Prisma.duty_officersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.duty_officersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>[]
+          }
+          delete: {
+            args: Prisma.duty_officersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>
+          }
+          update: {
+            args: Prisma.duty_officersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>
+          }
+          deleteMany: {
+            args: Prisma.duty_officersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.duty_officersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.duty_officersUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>[]
+          }
+          upsert: {
+            args: Prisma.duty_officersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$duty_officersPayload>
+          }
+          aggregate: {
+            args: Prisma.Duty_officersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDuty_officers>
+          }
+          groupBy: {
+            args: Prisma.duty_officersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Duty_officersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.duty_officersCountArgs<ExtArgs>
+            result: $Utils.Optional<Duty_officersCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1230,6 +1320,7 @@ export namespace Prisma {
     phones?: phonesOmit
     subcategories?: subcategoriesOmit
     shifts?: shiftsOmit
+    duty_officers?: duty_officersOmit
   }
 
   /* Types for Logging */
@@ -1325,10 +1416,14 @@ export namespace Prisma {
 
   export type CategoriesCountOutputType = {
     subcategories: number
+    organizations: number
+    duty_officers: number
   }
 
   export type CategoriesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subcategories?: boolean | CategoriesCountOutputTypeCountSubcategoriesArgs
+    organizations?: boolean | CategoriesCountOutputTypeCountOrganizationsArgs
+    duty_officers?: boolean | CategoriesCountOutputTypeCountDuty_officersArgs
   }
 
   // Custom InputTypes
@@ -1347,6 +1442,20 @@ export namespace Prisma {
    */
   export type CategoriesCountOutputTypeCountSubcategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: subcategoriesWhereInput
+  }
+
+  /**
+   * CategoriesCountOutputType without action
+   */
+  export type CategoriesCountOutputTypeCountOrganizationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: organizationsWhereInput
+  }
+
+  /**
+   * CategoriesCountOutputType without action
+   */
+  export type CategoriesCountOutputTypeCountDuty_officersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: duty_officersWhereInput
   }
 
 
@@ -1397,11 +1506,13 @@ export namespace Prisma {
   export type OrganizationsCountOutputType = {
     employees: number
     shifts: number
+    duty_officers: number
   }
 
   export type OrganizationsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     employees?: boolean | OrganizationsCountOutputTypeCountEmployeesArgs
     shifts?: boolean | OrganizationsCountOutputTypeCountShiftsArgs
+    duty_officers?: boolean | OrganizationsCountOutputTypeCountDuty_officersArgs
   }
 
   // Custom InputTypes
@@ -1429,6 +1540,13 @@ export namespace Prisma {
     where?: shiftsWhereInput
   }
 
+  /**
+   * OrganizationsCountOutputType without action
+   */
+  export type OrganizationsCountOutputTypeCountDuty_officersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: duty_officersWhereInput
+  }
+
 
   /**
    * Count Type SubcategoriesCountOutputType
@@ -1436,10 +1554,12 @@ export namespace Prisma {
 
   export type SubcategoriesCountOutputType = {
     organizations: number
+    duty_officers: number
   }
 
   export type SubcategoriesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     organizations?: boolean | SubcategoriesCountOutputTypeCountOrganizationsArgs
+    duty_officers?: boolean | SubcategoriesCountOutputTypeCountDuty_officersArgs
   }
 
   // Custom InputTypes
@@ -1458,6 +1578,13 @@ export namespace Prisma {
    */
   export type SubcategoriesCountOutputTypeCountOrganizationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: organizationsWhereInput
+  }
+
+  /**
+   * SubcategoriesCountOutputType without action
+   */
+  export type SubcategoriesCountOutputTypeCountDuty_officersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: duty_officersWhereInput
   }
 
 
@@ -1640,6 +1767,8 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     subcategories?: boolean | categories$subcategoriesArgs<ExtArgs>
+    organizations?: boolean | categories$organizationsArgs<ExtArgs>
+    duty_officers?: boolean | categories$duty_officersArgs<ExtArgs>
     _count?: boolean | CategoriesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["categories"]>
 
@@ -1661,6 +1790,8 @@ export namespace Prisma {
   export type categoriesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["categories"]>
   export type categoriesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subcategories?: boolean | categories$subcategoriesArgs<ExtArgs>
+    organizations?: boolean | categories$organizationsArgs<ExtArgs>
+    duty_officers?: boolean | categories$duty_officersArgs<ExtArgs>
     _count?: boolean | CategoriesCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type categoriesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1670,6 +1801,8 @@ export namespace Prisma {
     name: "categories"
     objects: {
       subcategories: Prisma.$subcategoriesPayload<ExtArgs>[]
+      organizations: Prisma.$organizationsPayload<ExtArgs>[]
+      duty_officers: Prisma.$duty_officersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2069,6 +2202,8 @@ export namespace Prisma {
   export interface Prisma__categoriesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     subcategories<T extends categories$subcategoriesArgs<ExtArgs> = {}>(args?: Subset<T, categories$subcategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$subcategoriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    organizations<T extends categories$organizationsArgs<ExtArgs> = {}>(args?: Subset<T, categories$organizationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$organizationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    duty_officers<T extends categories$duty_officersArgs<ExtArgs> = {}>(args?: Subset<T, categories$duty_officersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2509,6 +2644,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SubcategoriesScalarFieldEnum | SubcategoriesScalarFieldEnum[]
+  }
+
+  /**
+   * categories.organizations
+   */
+  export type categories$organizationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the organizations
+     */
+    select?: organizationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the organizations
+     */
+    omit?: organizationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: organizationsInclude<ExtArgs> | null
+    where?: organizationsWhereInput
+    orderBy?: organizationsOrderByWithRelationInput | organizationsOrderByWithRelationInput[]
+    cursor?: organizationsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OrganizationsScalarFieldEnum | OrganizationsScalarFieldEnum[]
+  }
+
+  /**
+   * categories.duty_officers
+   */
+  export type categories$duty_officersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    where?: duty_officersWhereInput
+    orderBy?: duty_officersOrderByWithRelationInput | duty_officersOrderByWithRelationInput[]
+    cursor?: duty_officersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Duty_officersScalarFieldEnum | Duty_officersScalarFieldEnum[]
   }
 
   /**
@@ -3686,29 +3869,34 @@ export namespace Prisma {
   export type OrganizationsAvgAggregateOutputType = {
     id: number | null
     subcategory_id: number | null
+    category_id: number | null
   }
 
   export type OrganizationsSumAggregateOutputType = {
     id: number | null
     subcategory_id: number | null
+    category_id: number | null
   }
 
   export type OrganizationsMinAggregateOutputType = {
     id: number | null
     name: string | null
     subcategory_id: number | null
+    category_id: number | null
   }
 
   export type OrganizationsMaxAggregateOutputType = {
     id: number | null
     name: string | null
     subcategory_id: number | null
+    category_id: number | null
   }
 
   export type OrganizationsCountAggregateOutputType = {
     id: number
     name: number
     subcategory_id: number
+    category_id: number
     _all: number
   }
 
@@ -3716,29 +3904,34 @@ export namespace Prisma {
   export type OrganizationsAvgAggregateInputType = {
     id?: true
     subcategory_id?: true
+    category_id?: true
   }
 
   export type OrganizationsSumAggregateInputType = {
     id?: true
     subcategory_id?: true
+    category_id?: true
   }
 
   export type OrganizationsMinAggregateInputType = {
     id?: true
     name?: true
     subcategory_id?: true
+    category_id?: true
   }
 
   export type OrganizationsMaxAggregateInputType = {
     id?: true
     name?: true
     subcategory_id?: true
+    category_id?: true
   }
 
   export type OrganizationsCountAggregateInputType = {
     id?: true
     name?: true
     subcategory_id?: true
+    category_id?: true
     _all?: true
   }
 
@@ -3831,7 +4024,8 @@ export namespace Prisma {
   export type OrganizationsGroupByOutputType = {
     id: number
     name: string
-    subcategory_id: number
+    subcategory_id: number | null
+    category_id: number
     _count: OrganizationsCountAggregateOutputType | null
     _avg: OrganizationsAvgAggregateOutputType | null
     _sum: OrganizationsSumAggregateOutputType | null
@@ -3857,9 +4051,12 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     subcategory_id?: boolean
-    subcategory?: boolean | subcategoriesDefaultArgs<ExtArgs>
+    category_id?: boolean
+    subcategory?: boolean | organizations$subcategoryArgs<ExtArgs>
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
     employees?: boolean | organizations$employeesArgs<ExtArgs>
     shifts?: boolean | organizations$shiftsArgs<ExtArgs>
+    duty_officers?: boolean | organizations$duty_officersArgs<ExtArgs>
     _count?: boolean | OrganizationsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organizations"]>
 
@@ -3867,47 +4064,59 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     subcategory_id?: boolean
-    subcategory?: boolean | subcategoriesDefaultArgs<ExtArgs>
+    category_id?: boolean
+    subcategory?: boolean | organizations$subcategoryArgs<ExtArgs>
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organizations"]>
 
   export type organizationsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     subcategory_id?: boolean
-    subcategory?: boolean | subcategoriesDefaultArgs<ExtArgs>
+    category_id?: boolean
+    subcategory?: boolean | organizations$subcategoryArgs<ExtArgs>
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organizations"]>
 
   export type organizationsSelectScalar = {
     id?: boolean
     name?: boolean
     subcategory_id?: boolean
+    category_id?: boolean
   }
 
-  export type organizationsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "subcategory_id", ExtArgs["result"]["organizations"]>
+  export type organizationsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "subcategory_id" | "category_id", ExtArgs["result"]["organizations"]>
   export type organizationsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subcategory?: boolean | subcategoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | organizations$subcategoryArgs<ExtArgs>
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
     employees?: boolean | organizations$employeesArgs<ExtArgs>
     shifts?: boolean | organizations$shiftsArgs<ExtArgs>
+    duty_officers?: boolean | organizations$duty_officersArgs<ExtArgs>
     _count?: boolean | OrganizationsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type organizationsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subcategory?: boolean | subcategoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | organizations$subcategoryArgs<ExtArgs>
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
   }
   export type organizationsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subcategory?: boolean | subcategoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | organizations$subcategoryArgs<ExtArgs>
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
   }
 
   export type $organizationsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "organizations"
     objects: {
-      subcategory: Prisma.$subcategoriesPayload<ExtArgs>
+      subcategory: Prisma.$subcategoriesPayload<ExtArgs> | null
+      category: Prisma.$categoriesPayload<ExtArgs>
       employees: Prisma.$employeesPayload<ExtArgs>[]
       shifts: Prisma.$shiftsPayload<ExtArgs>[]
+      duty_officers: Prisma.$duty_officersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      subcategory_id: number
+      subcategory_id: number | null
+      category_id: number
     }, ExtArgs["result"]["organizations"]>
     composites: {}
   }
@@ -4302,9 +4511,11 @@ export namespace Prisma {
    */
   export interface Prisma__organizationsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    subcategory<T extends subcategoriesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, subcategoriesDefaultArgs<ExtArgs>>): Prisma__subcategoriesClient<$Result.GetResult<Prisma.$subcategoriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    subcategory<T extends organizations$subcategoryArgs<ExtArgs> = {}>(args?: Subset<T, organizations$subcategoryArgs<ExtArgs>>): Prisma__subcategoriesClient<$Result.GetResult<Prisma.$subcategoriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    category<T extends categoriesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, categoriesDefaultArgs<ExtArgs>>): Prisma__categoriesClient<$Result.GetResult<Prisma.$categoriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     employees<T extends organizations$employeesArgs<ExtArgs> = {}>(args?: Subset<T, organizations$employeesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$employeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     shifts<T extends organizations$shiftsArgs<ExtArgs> = {}>(args?: Subset<T, organizations$shiftsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$shiftsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    duty_officers<T extends organizations$duty_officersArgs<ExtArgs> = {}>(args?: Subset<T, organizations$duty_officersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4337,6 +4548,7 @@ export namespace Prisma {
     readonly id: FieldRef<"organizations", 'Int'>
     readonly name: FieldRef<"organizations", 'String'>
     readonly subcategory_id: FieldRef<"organizations", 'Int'>
+    readonly category_id: FieldRef<"organizations", 'Int'>
   }
     
 
@@ -4733,6 +4945,25 @@ export namespace Prisma {
   }
 
   /**
+   * organizations.subcategory
+   */
+  export type organizations$subcategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the subcategories
+     */
+    select?: subcategoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the subcategories
+     */
+    omit?: subcategoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: subcategoriesInclude<ExtArgs> | null
+    where?: subcategoriesWhereInput
+  }
+
+  /**
    * organizations.employees
    */
   export type organizations$employeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4778,6 +5009,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ShiftsScalarFieldEnum | ShiftsScalarFieldEnum[]
+  }
+
+  /**
+   * organizations.duty_officers
+   */
+  export type organizations$duty_officersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    where?: duty_officersWhereInput
+    orderBy?: duty_officersOrderByWithRelationInput | duty_officersOrderByWithRelationInput[]
+    cursor?: duty_officersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Duty_officersScalarFieldEnum | Duty_officersScalarFieldEnum[]
   }
 
   /**
@@ -6057,6 +6312,7 @@ export namespace Prisma {
     category_id?: boolean
     category?: boolean | categoriesDefaultArgs<ExtArgs>
     organizations?: boolean | subcategories$organizationsArgs<ExtArgs>
+    duty_officers?: boolean | subcategories$duty_officersArgs<ExtArgs>
     _count?: boolean | SubcategoriesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subcategories"]>
 
@@ -6084,6 +6340,7 @@ export namespace Prisma {
   export type subcategoriesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | categoriesDefaultArgs<ExtArgs>
     organizations?: boolean | subcategories$organizationsArgs<ExtArgs>
+    duty_officers?: boolean | subcategories$duty_officersArgs<ExtArgs>
     _count?: boolean | SubcategoriesCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type subcategoriesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6098,6 +6355,7 @@ export namespace Prisma {
     objects: {
       category: Prisma.$categoriesPayload<ExtArgs>
       organizations: Prisma.$organizationsPayload<ExtArgs>[]
+      duty_officers: Prisma.$duty_officersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6499,6 +6757,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     category<T extends categoriesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, categoriesDefaultArgs<ExtArgs>>): Prisma__categoriesClient<$Result.GetResult<Prisma.$categoriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     organizations<T extends subcategories$organizationsArgs<ExtArgs> = {}>(args?: Subset<T, subcategories$organizationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$organizationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    duty_officers<T extends subcategories$duty_officersArgs<ExtArgs> = {}>(args?: Subset<T, subcategories$duty_officersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6951,6 +7210,30 @@ export namespace Prisma {
   }
 
   /**
+   * subcategories.duty_officers
+   */
+  export type subcategories$duty_officersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    where?: duty_officersWhereInput
+    orderBy?: duty_officersOrderByWithRelationInput | duty_officersOrderByWithRelationInput[]
+    cursor?: duty_officersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Duty_officersScalarFieldEnum | Duty_officersScalarFieldEnum[]
+  }
+
+  /**
    * subcategories without action
    */
   export type subcategoriesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6998,8 +7281,8 @@ export namespace Prisma {
     employee_id: number | null
     organization_id: number | null
     shift_date: Date | null
-    start_time: Date | null
-    end_time: Date | null
+    start_time: string | null
+    end_time: string | null
   }
 
   export type ShiftsMaxAggregateOutputType = {
@@ -7007,8 +7290,8 @@ export namespace Prisma {
     employee_id: number | null
     organization_id: number | null
     shift_date: Date | null
-    start_time: Date | null
-    end_time: Date | null
+    start_time: string | null
+    end_time: string | null
   }
 
   export type ShiftsCountAggregateOutputType = {
@@ -7153,8 +7436,8 @@ export namespace Prisma {
     employee_id: number
     organization_id: number
     shift_date: Date
-    start_time: Date | null
-    end_time: Date | null
+    start_time: string | null
+    end_time: string | null
     _count: ShiftsCountAggregateOutputType | null
     _avg: ShiftsAvgAggregateOutputType | null
     _sum: ShiftsSumAggregateOutputType | null
@@ -7243,8 +7526,8 @@ export namespace Prisma {
       employee_id: number
       organization_id: number
       shift_date: Date
-      start_time: Date | null
-      end_time: Date | null
+      start_time: string | null
+      end_time: string | null
     }, ExtArgs["result"]["shifts"]>
     composites: {}
   }
@@ -7674,8 +7957,8 @@ export namespace Prisma {
     readonly employee_id: FieldRef<"shifts", 'Int'>
     readonly organization_id: FieldRef<"shifts", 'Int'>
     readonly shift_date: FieldRef<"shifts", 'DateTime'>
-    readonly start_time: FieldRef<"shifts", 'DateTime'>
-    readonly end_time: FieldRef<"shifts", 'DateTime'>
+    readonly start_time: FieldRef<"shifts", 'String'>
+    readonly end_time: FieldRef<"shifts", 'String'>
   }
     
 
@@ -8091,6 +8374,1177 @@ export namespace Prisma {
 
 
   /**
+   * Model duty_officers
+   */
+
+  export type AggregateDuty_officers = {
+    _count: Duty_officersCountAggregateOutputType | null
+    _avg: Duty_officersAvgAggregateOutputType | null
+    _sum: Duty_officersSumAggregateOutputType | null
+    _min: Duty_officersMinAggregateOutputType | null
+    _max: Duty_officersMaxAggregateOutputType | null
+  }
+
+  export type Duty_officersAvgAggregateOutputType = {
+    id: number | null
+    category_id: number | null
+    subcategory_id: number | null
+    organization_id: number | null
+  }
+
+  export type Duty_officersSumAggregateOutputType = {
+    id: number | null
+    category_id: number | null
+    subcategory_id: number | null
+    organization_id: number | null
+  }
+
+  export type Duty_officersMinAggregateOutputType = {
+    id: number | null
+    position: string | null
+    phones: string | null
+    category_id: number | null
+    subcategory_id: number | null
+    organization_id: number | null
+  }
+
+  export type Duty_officersMaxAggregateOutputType = {
+    id: number | null
+    position: string | null
+    phones: string | null
+    category_id: number | null
+    subcategory_id: number | null
+    organization_id: number | null
+  }
+
+  export type Duty_officersCountAggregateOutputType = {
+    id: number
+    position: number
+    phones: number
+    category_id: number
+    subcategory_id: number
+    organization_id: number
+    _all: number
+  }
+
+
+  export type Duty_officersAvgAggregateInputType = {
+    id?: true
+    category_id?: true
+    subcategory_id?: true
+    organization_id?: true
+  }
+
+  export type Duty_officersSumAggregateInputType = {
+    id?: true
+    category_id?: true
+    subcategory_id?: true
+    organization_id?: true
+  }
+
+  export type Duty_officersMinAggregateInputType = {
+    id?: true
+    position?: true
+    phones?: true
+    category_id?: true
+    subcategory_id?: true
+    organization_id?: true
+  }
+
+  export type Duty_officersMaxAggregateInputType = {
+    id?: true
+    position?: true
+    phones?: true
+    category_id?: true
+    subcategory_id?: true
+    organization_id?: true
+  }
+
+  export type Duty_officersCountAggregateInputType = {
+    id?: true
+    position?: true
+    phones?: true
+    category_id?: true
+    subcategory_id?: true
+    organization_id?: true
+    _all?: true
+  }
+
+  export type Duty_officersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which duty_officers to aggregate.
+     */
+    where?: duty_officersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of duty_officers to fetch.
+     */
+    orderBy?: duty_officersOrderByWithRelationInput | duty_officersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: duty_officersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` duty_officers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` duty_officers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned duty_officers
+    **/
+    _count?: true | Duty_officersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Duty_officersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Duty_officersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Duty_officersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Duty_officersMaxAggregateInputType
+  }
+
+  export type GetDuty_officersAggregateType<T extends Duty_officersAggregateArgs> = {
+        [P in keyof T & keyof AggregateDuty_officers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDuty_officers[P]>
+      : GetScalarType<T[P], AggregateDuty_officers[P]>
+  }
+
+
+
+
+  export type duty_officersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: duty_officersWhereInput
+    orderBy?: duty_officersOrderByWithAggregationInput | duty_officersOrderByWithAggregationInput[]
+    by: Duty_officersScalarFieldEnum[] | Duty_officersScalarFieldEnum
+    having?: duty_officersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Duty_officersCountAggregateInputType | true
+    _avg?: Duty_officersAvgAggregateInputType
+    _sum?: Duty_officersSumAggregateInputType
+    _min?: Duty_officersMinAggregateInputType
+    _max?: Duty_officersMaxAggregateInputType
+  }
+
+  export type Duty_officersGroupByOutputType = {
+    id: number
+    position: string
+    phones: string
+    category_id: number
+    subcategory_id: number | null
+    organization_id: number
+    _count: Duty_officersCountAggregateOutputType | null
+    _avg: Duty_officersAvgAggregateOutputType | null
+    _sum: Duty_officersSumAggregateOutputType | null
+    _min: Duty_officersMinAggregateOutputType | null
+    _max: Duty_officersMaxAggregateOutputType | null
+  }
+
+  type GetDuty_officersGroupByPayload<T extends duty_officersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Duty_officersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Duty_officersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Duty_officersGroupByOutputType[P]>
+            : GetScalarType<T[P], Duty_officersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type duty_officersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    position?: boolean
+    phones?: boolean
+    category_id?: boolean
+    subcategory_id?: boolean
+    organization_id?: boolean
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | duty_officers$subcategoryArgs<ExtArgs>
+    organization?: boolean | duty_officers$organizationArgs<ExtArgs>
+  }, ExtArgs["result"]["duty_officers"]>
+
+  export type duty_officersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    position?: boolean
+    phones?: boolean
+    category_id?: boolean
+    subcategory_id?: boolean
+    organization_id?: boolean
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | duty_officers$subcategoryArgs<ExtArgs>
+    organization?: boolean | duty_officers$organizationArgs<ExtArgs>
+  }, ExtArgs["result"]["duty_officers"]>
+
+  export type duty_officersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    position?: boolean
+    phones?: boolean
+    category_id?: boolean
+    subcategory_id?: boolean
+    organization_id?: boolean
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | duty_officers$subcategoryArgs<ExtArgs>
+    organization?: boolean | duty_officers$organizationArgs<ExtArgs>
+  }, ExtArgs["result"]["duty_officers"]>
+
+  export type duty_officersSelectScalar = {
+    id?: boolean
+    position?: boolean
+    phones?: boolean
+    category_id?: boolean
+    subcategory_id?: boolean
+    organization_id?: boolean
+  }
+
+  export type duty_officersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "phones" | "category_id" | "subcategory_id" | "organization_id", ExtArgs["result"]["duty_officers"]>
+  export type duty_officersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | duty_officers$subcategoryArgs<ExtArgs>
+    organization?: boolean | duty_officers$organizationArgs<ExtArgs>
+  }
+  export type duty_officersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | duty_officers$subcategoryArgs<ExtArgs>
+    organization?: boolean | duty_officers$organizationArgs<ExtArgs>
+  }
+  export type duty_officersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | categoriesDefaultArgs<ExtArgs>
+    subcategory?: boolean | duty_officers$subcategoryArgs<ExtArgs>
+    organization?: boolean | duty_officers$organizationArgs<ExtArgs>
+  }
+
+  export type $duty_officersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "duty_officers"
+    objects: {
+      category: Prisma.$categoriesPayload<ExtArgs>
+      subcategory: Prisma.$subcategoriesPayload<ExtArgs> | null
+      organization: Prisma.$organizationsPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      position: string
+      phones: string
+      category_id: number
+      subcategory_id: number | null
+      organization_id: number
+    }, ExtArgs["result"]["duty_officers"]>
+    composites: {}
+  }
+
+  type duty_officersGetPayload<S extends boolean | null | undefined | duty_officersDefaultArgs> = $Result.GetResult<Prisma.$duty_officersPayload, S>
+
+  type duty_officersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<duty_officersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Duty_officersCountAggregateInputType | true
+    }
+
+  export interface duty_officersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['duty_officers'], meta: { name: 'duty_officers' } }
+    /**
+     * Find zero or one Duty_officers that matches the filter.
+     * @param {duty_officersFindUniqueArgs} args - Arguments to find a Duty_officers
+     * @example
+     * // Get one Duty_officers
+     * const duty_officers = await prisma.duty_officers.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends duty_officersFindUniqueArgs>(args: SelectSubset<T, duty_officersFindUniqueArgs<ExtArgs>>): Prisma__duty_officersClient<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Duty_officers that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {duty_officersFindUniqueOrThrowArgs} args - Arguments to find a Duty_officers
+     * @example
+     * // Get one Duty_officers
+     * const duty_officers = await prisma.duty_officers.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends duty_officersFindUniqueOrThrowArgs>(args: SelectSubset<T, duty_officersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__duty_officersClient<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Duty_officers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {duty_officersFindFirstArgs} args - Arguments to find a Duty_officers
+     * @example
+     * // Get one Duty_officers
+     * const duty_officers = await prisma.duty_officers.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends duty_officersFindFirstArgs>(args?: SelectSubset<T, duty_officersFindFirstArgs<ExtArgs>>): Prisma__duty_officersClient<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Duty_officers that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {duty_officersFindFirstOrThrowArgs} args - Arguments to find a Duty_officers
+     * @example
+     * // Get one Duty_officers
+     * const duty_officers = await prisma.duty_officers.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends duty_officersFindFirstOrThrowArgs>(args?: SelectSubset<T, duty_officersFindFirstOrThrowArgs<ExtArgs>>): Prisma__duty_officersClient<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Duty_officers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {duty_officersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Duty_officers
+     * const duty_officers = await prisma.duty_officers.findMany()
+     * 
+     * // Get first 10 Duty_officers
+     * const duty_officers = await prisma.duty_officers.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const duty_officersWithIdOnly = await prisma.duty_officers.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends duty_officersFindManyArgs>(args?: SelectSubset<T, duty_officersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Duty_officers.
+     * @param {duty_officersCreateArgs} args - Arguments to create a Duty_officers.
+     * @example
+     * // Create one Duty_officers
+     * const Duty_officers = await prisma.duty_officers.create({
+     *   data: {
+     *     // ... data to create a Duty_officers
+     *   }
+     * })
+     * 
+     */
+    create<T extends duty_officersCreateArgs>(args: SelectSubset<T, duty_officersCreateArgs<ExtArgs>>): Prisma__duty_officersClient<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Duty_officers.
+     * @param {duty_officersCreateManyArgs} args - Arguments to create many Duty_officers.
+     * @example
+     * // Create many Duty_officers
+     * const duty_officers = await prisma.duty_officers.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends duty_officersCreateManyArgs>(args?: SelectSubset<T, duty_officersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Duty_officers and returns the data saved in the database.
+     * @param {duty_officersCreateManyAndReturnArgs} args - Arguments to create many Duty_officers.
+     * @example
+     * // Create many Duty_officers
+     * const duty_officers = await prisma.duty_officers.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Duty_officers and only return the `id`
+     * const duty_officersWithIdOnly = await prisma.duty_officers.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends duty_officersCreateManyAndReturnArgs>(args?: SelectSubset<T, duty_officersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Duty_officers.
+     * @param {duty_officersDeleteArgs} args - Arguments to delete one Duty_officers.
+     * @example
+     * // Delete one Duty_officers
+     * const Duty_officers = await prisma.duty_officers.delete({
+     *   where: {
+     *     // ... filter to delete one Duty_officers
+     *   }
+     * })
+     * 
+     */
+    delete<T extends duty_officersDeleteArgs>(args: SelectSubset<T, duty_officersDeleteArgs<ExtArgs>>): Prisma__duty_officersClient<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Duty_officers.
+     * @param {duty_officersUpdateArgs} args - Arguments to update one Duty_officers.
+     * @example
+     * // Update one Duty_officers
+     * const duty_officers = await prisma.duty_officers.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends duty_officersUpdateArgs>(args: SelectSubset<T, duty_officersUpdateArgs<ExtArgs>>): Prisma__duty_officersClient<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Duty_officers.
+     * @param {duty_officersDeleteManyArgs} args - Arguments to filter Duty_officers to delete.
+     * @example
+     * // Delete a few Duty_officers
+     * const { count } = await prisma.duty_officers.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends duty_officersDeleteManyArgs>(args?: SelectSubset<T, duty_officersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Duty_officers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {duty_officersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Duty_officers
+     * const duty_officers = await prisma.duty_officers.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends duty_officersUpdateManyArgs>(args: SelectSubset<T, duty_officersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Duty_officers and returns the data updated in the database.
+     * @param {duty_officersUpdateManyAndReturnArgs} args - Arguments to update many Duty_officers.
+     * @example
+     * // Update many Duty_officers
+     * const duty_officers = await prisma.duty_officers.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Duty_officers and only return the `id`
+     * const duty_officersWithIdOnly = await prisma.duty_officers.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends duty_officersUpdateManyAndReturnArgs>(args: SelectSubset<T, duty_officersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Duty_officers.
+     * @param {duty_officersUpsertArgs} args - Arguments to update or create a Duty_officers.
+     * @example
+     * // Update or create a Duty_officers
+     * const duty_officers = await prisma.duty_officers.upsert({
+     *   create: {
+     *     // ... data to create a Duty_officers
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Duty_officers we want to update
+     *   }
+     * })
+     */
+    upsert<T extends duty_officersUpsertArgs>(args: SelectSubset<T, duty_officersUpsertArgs<ExtArgs>>): Prisma__duty_officersClient<$Result.GetResult<Prisma.$duty_officersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Duty_officers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {duty_officersCountArgs} args - Arguments to filter Duty_officers to count.
+     * @example
+     * // Count the number of Duty_officers
+     * const count = await prisma.duty_officers.count({
+     *   where: {
+     *     // ... the filter for the Duty_officers we want to count
+     *   }
+     * })
+    **/
+    count<T extends duty_officersCountArgs>(
+      args?: Subset<T, duty_officersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Duty_officersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Duty_officers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Duty_officersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Duty_officersAggregateArgs>(args: Subset<T, Duty_officersAggregateArgs>): Prisma.PrismaPromise<GetDuty_officersAggregateType<T>>
+
+    /**
+     * Group by Duty_officers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {duty_officersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends duty_officersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: duty_officersGroupByArgs['orderBy'] }
+        : { orderBy?: duty_officersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, duty_officersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDuty_officersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the duty_officers model
+   */
+  readonly fields: duty_officersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for duty_officers.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__duty_officersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    category<T extends categoriesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, categoriesDefaultArgs<ExtArgs>>): Prisma__categoriesClient<$Result.GetResult<Prisma.$categoriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    subcategory<T extends duty_officers$subcategoryArgs<ExtArgs> = {}>(args?: Subset<T, duty_officers$subcategoryArgs<ExtArgs>>): Prisma__subcategoriesClient<$Result.GetResult<Prisma.$subcategoriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    organization<T extends duty_officers$organizationArgs<ExtArgs> = {}>(args?: Subset<T, duty_officers$organizationArgs<ExtArgs>>): Prisma__organizationsClient<$Result.GetResult<Prisma.$organizationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the duty_officers model
+   */
+  interface duty_officersFieldRefs {
+    readonly id: FieldRef<"duty_officers", 'Int'>
+    readonly position: FieldRef<"duty_officers", 'String'>
+    readonly phones: FieldRef<"duty_officers", 'String'>
+    readonly category_id: FieldRef<"duty_officers", 'Int'>
+    readonly subcategory_id: FieldRef<"duty_officers", 'Int'>
+    readonly organization_id: FieldRef<"duty_officers", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * duty_officers findUnique
+   */
+  export type duty_officersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * Filter, which duty_officers to fetch.
+     */
+    where: duty_officersWhereUniqueInput
+  }
+
+  /**
+   * duty_officers findUniqueOrThrow
+   */
+  export type duty_officersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * Filter, which duty_officers to fetch.
+     */
+    where: duty_officersWhereUniqueInput
+  }
+
+  /**
+   * duty_officers findFirst
+   */
+  export type duty_officersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * Filter, which duty_officers to fetch.
+     */
+    where?: duty_officersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of duty_officers to fetch.
+     */
+    orderBy?: duty_officersOrderByWithRelationInput | duty_officersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for duty_officers.
+     */
+    cursor?: duty_officersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` duty_officers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` duty_officers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of duty_officers.
+     */
+    distinct?: Duty_officersScalarFieldEnum | Duty_officersScalarFieldEnum[]
+  }
+
+  /**
+   * duty_officers findFirstOrThrow
+   */
+  export type duty_officersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * Filter, which duty_officers to fetch.
+     */
+    where?: duty_officersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of duty_officers to fetch.
+     */
+    orderBy?: duty_officersOrderByWithRelationInput | duty_officersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for duty_officers.
+     */
+    cursor?: duty_officersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` duty_officers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` duty_officers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of duty_officers.
+     */
+    distinct?: Duty_officersScalarFieldEnum | Duty_officersScalarFieldEnum[]
+  }
+
+  /**
+   * duty_officers findMany
+   */
+  export type duty_officersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * Filter, which duty_officers to fetch.
+     */
+    where?: duty_officersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of duty_officers to fetch.
+     */
+    orderBy?: duty_officersOrderByWithRelationInput | duty_officersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing duty_officers.
+     */
+    cursor?: duty_officersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` duty_officers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` duty_officers.
+     */
+    skip?: number
+    distinct?: Duty_officersScalarFieldEnum | Duty_officersScalarFieldEnum[]
+  }
+
+  /**
+   * duty_officers create
+   */
+  export type duty_officersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * The data needed to create a duty_officers.
+     */
+    data: XOR<duty_officersCreateInput, duty_officersUncheckedCreateInput>
+  }
+
+  /**
+   * duty_officers createMany
+   */
+  export type duty_officersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many duty_officers.
+     */
+    data: duty_officersCreateManyInput | duty_officersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * duty_officers createManyAndReturn
+   */
+  export type duty_officersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * The data used to create many duty_officers.
+     */
+    data: duty_officersCreateManyInput | duty_officersCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * duty_officers update
+   */
+  export type duty_officersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * The data needed to update a duty_officers.
+     */
+    data: XOR<duty_officersUpdateInput, duty_officersUncheckedUpdateInput>
+    /**
+     * Choose, which duty_officers to update.
+     */
+    where: duty_officersWhereUniqueInput
+  }
+
+  /**
+   * duty_officers updateMany
+   */
+  export type duty_officersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update duty_officers.
+     */
+    data: XOR<duty_officersUpdateManyMutationInput, duty_officersUncheckedUpdateManyInput>
+    /**
+     * Filter which duty_officers to update
+     */
+    where?: duty_officersWhereInput
+    /**
+     * Limit how many duty_officers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * duty_officers updateManyAndReturn
+   */
+  export type duty_officersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * The data used to update duty_officers.
+     */
+    data: XOR<duty_officersUpdateManyMutationInput, duty_officersUncheckedUpdateManyInput>
+    /**
+     * Filter which duty_officers to update
+     */
+    where?: duty_officersWhereInput
+    /**
+     * Limit how many duty_officers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * duty_officers upsert
+   */
+  export type duty_officersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * The filter to search for the duty_officers to update in case it exists.
+     */
+    where: duty_officersWhereUniqueInput
+    /**
+     * In case the duty_officers found by the `where` argument doesn't exist, create a new duty_officers with this data.
+     */
+    create: XOR<duty_officersCreateInput, duty_officersUncheckedCreateInput>
+    /**
+     * In case the duty_officers was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<duty_officersUpdateInput, duty_officersUncheckedUpdateInput>
+  }
+
+  /**
+   * duty_officers delete
+   */
+  export type duty_officersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+    /**
+     * Filter which duty_officers to delete.
+     */
+    where: duty_officersWhereUniqueInput
+  }
+
+  /**
+   * duty_officers deleteMany
+   */
+  export type duty_officersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which duty_officers to delete
+     */
+    where?: duty_officersWhereInput
+    /**
+     * Limit how many duty_officers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * duty_officers.subcategory
+   */
+  export type duty_officers$subcategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the subcategories
+     */
+    select?: subcategoriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the subcategories
+     */
+    omit?: subcategoriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: subcategoriesInclude<ExtArgs> | null
+    where?: subcategoriesWhereInput
+  }
+
+  /**
+   * duty_officers.organization
+   */
+  export type duty_officers$organizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the organizations
+     */
+    select?: organizationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the organizations
+     */
+    omit?: organizationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: organizationsInclude<ExtArgs> | null
+    where?: organizationsWhereInput
+  }
+
+  /**
+   * duty_officers without action
+   */
+  export type duty_officersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the duty_officers
+     */
+    select?: duty_officersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the duty_officers
+     */
+    omit?: duty_officersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: duty_officersInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8125,7 +9579,8 @@ export namespace Prisma {
   export const OrganizationsScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    subcategory_id: 'subcategory_id'
+    subcategory_id: 'subcategory_id',
+    category_id: 'category_id'
   };
 
   export type OrganizationsScalarFieldEnum = (typeof OrganizationsScalarFieldEnum)[keyof typeof OrganizationsScalarFieldEnum]
@@ -8159,6 +9614,18 @@ export namespace Prisma {
   };
 
   export type ShiftsScalarFieldEnum = (typeof ShiftsScalarFieldEnum)[keyof typeof ShiftsScalarFieldEnum]
+
+
+  export const Duty_officersScalarFieldEnum: {
+    id: 'id',
+    position: 'position',
+    phones: 'phones',
+    category_id: 'category_id',
+    subcategory_id: 'subcategory_id',
+    organization_id: 'organization_id'
+  };
+
+  export type Duty_officersScalarFieldEnum = (typeof Duty_officersScalarFieldEnum)[keyof typeof Duty_officersScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8256,12 +9723,16 @@ export namespace Prisma {
     id?: IntFilter<"categories"> | number
     name?: StringFilter<"categories"> | string
     subcategories?: SubcategoriesListRelationFilter
+    organizations?: OrganizationsListRelationFilter
+    duty_officers?: Duty_officersListRelationFilter
   }
 
   export type categoriesOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     subcategories?: subcategoriesOrderByRelationAggregateInput
+    organizations?: organizationsOrderByRelationAggregateInput
+    duty_officers?: duty_officersOrderByRelationAggregateInput
   }
 
   export type categoriesWhereUniqueInput = Prisma.AtLeast<{
@@ -8271,6 +9742,8 @@ export namespace Prisma {
     OR?: categoriesWhereInput[]
     NOT?: categoriesWhereInput | categoriesWhereInput[]
     subcategories?: SubcategoriesListRelationFilter
+    organizations?: OrganizationsListRelationFilter
+    duty_officers?: Duty_officersListRelationFilter
   }, "id" | "name">
 
   export type categoriesOrderByWithAggregationInput = {
@@ -8356,19 +9829,25 @@ export namespace Prisma {
     NOT?: organizationsWhereInput | organizationsWhereInput[]
     id?: IntFilter<"organizations"> | number
     name?: StringFilter<"organizations"> | string
-    subcategory_id?: IntFilter<"organizations"> | number
-    subcategory?: XOR<SubcategoriesScalarRelationFilter, subcategoriesWhereInput>
+    subcategory_id?: IntNullableFilter<"organizations"> | number | null
+    category_id?: IntFilter<"organizations"> | number
+    subcategory?: XOR<SubcategoriesNullableScalarRelationFilter, subcategoriesWhereInput> | null
+    category?: XOR<CategoriesScalarRelationFilter, categoriesWhereInput>
     employees?: EmployeesListRelationFilter
     shifts?: ShiftsListRelationFilter
+    duty_officers?: Duty_officersListRelationFilter
   }
 
   export type organizationsOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    subcategory_id?: SortOrder
+    subcategory_id?: SortOrderInput | SortOrder
+    category_id?: SortOrder
     subcategory?: subcategoriesOrderByWithRelationInput
+    category?: categoriesOrderByWithRelationInput
     employees?: employeesOrderByRelationAggregateInput
     shifts?: shiftsOrderByRelationAggregateInput
+    duty_officers?: duty_officersOrderByRelationAggregateInput
   }
 
   export type organizationsWhereUniqueInput = Prisma.AtLeast<{
@@ -8377,16 +9856,20 @@ export namespace Prisma {
     AND?: organizationsWhereInput | organizationsWhereInput[]
     OR?: organizationsWhereInput[]
     NOT?: organizationsWhereInput | organizationsWhereInput[]
-    subcategory_id?: IntFilter<"organizations"> | number
-    subcategory?: XOR<SubcategoriesScalarRelationFilter, subcategoriesWhereInput>
+    subcategory_id?: IntNullableFilter<"organizations"> | number | null
+    category_id?: IntFilter<"organizations"> | number
+    subcategory?: XOR<SubcategoriesNullableScalarRelationFilter, subcategoriesWhereInput> | null
+    category?: XOR<CategoriesScalarRelationFilter, categoriesWhereInput>
     employees?: EmployeesListRelationFilter
     shifts?: ShiftsListRelationFilter
+    duty_officers?: Duty_officersListRelationFilter
   }, "id" | "name">
 
   export type organizationsOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    subcategory_id?: SortOrder
+    subcategory_id?: SortOrderInput | SortOrder
+    category_id?: SortOrder
     _count?: organizationsCountOrderByAggregateInput
     _avg?: organizationsAvgOrderByAggregateInput
     _max?: organizationsMaxOrderByAggregateInput
@@ -8400,7 +9883,8 @@ export namespace Prisma {
     NOT?: organizationsScalarWhereWithAggregatesInput | organizationsScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"organizations"> | number
     name?: StringWithAggregatesFilter<"organizations"> | string
-    subcategory_id?: IntWithAggregatesFilter<"organizations"> | number
+    subcategory_id?: IntNullableWithAggregatesFilter<"organizations"> | number | null
+    category_id?: IntWithAggregatesFilter<"organizations"> | number
   }
 
   export type phonesWhereInput = {
@@ -8460,6 +9944,7 @@ export namespace Prisma {
     category_id?: IntFilter<"subcategories"> | number
     category?: XOR<CategoriesScalarRelationFilter, categoriesWhereInput>
     organizations?: OrganizationsListRelationFilter
+    duty_officers?: Duty_officersListRelationFilter
   }
 
   export type subcategoriesOrderByWithRelationInput = {
@@ -8468,6 +9953,7 @@ export namespace Prisma {
     category_id?: SortOrder
     category?: categoriesOrderByWithRelationInput
     organizations?: organizationsOrderByRelationAggregateInput
+    duty_officers?: duty_officersOrderByRelationAggregateInput
   }
 
   export type subcategoriesWhereUniqueInput = Prisma.AtLeast<{
@@ -8480,6 +9966,7 @@ export namespace Prisma {
     category_id?: IntFilter<"subcategories"> | number
     category?: XOR<CategoriesScalarRelationFilter, categoriesWhereInput>
     organizations?: OrganizationsListRelationFilter
+    duty_officers?: Duty_officersListRelationFilter
   }, "id" | "name_category_id">
 
   export type subcategoriesOrderByWithAggregationInput = {
@@ -8510,8 +9997,8 @@ export namespace Prisma {
     employee_id?: IntFilter<"shifts"> | number
     organization_id?: IntFilter<"shifts"> | number
     shift_date?: DateTimeFilter<"shifts"> | Date | string
-    start_time?: DateTimeNullableFilter<"shifts"> | Date | string | null
-    end_time?: DateTimeNullableFilter<"shifts"> | Date | string | null
+    start_time?: StringNullableFilter<"shifts"> | string | null
+    end_time?: StringNullableFilter<"shifts"> | string | null
     employee?: XOR<EmployeesScalarRelationFilter, employeesWhereInput>
     organization?: XOR<OrganizationsScalarRelationFilter, organizationsWhereInput>
   }
@@ -8535,8 +10022,8 @@ export namespace Prisma {
     employee_id?: IntFilter<"shifts"> | number
     organization_id?: IntFilter<"shifts"> | number
     shift_date?: DateTimeFilter<"shifts"> | Date | string
-    start_time?: DateTimeNullableFilter<"shifts"> | Date | string | null
-    end_time?: DateTimeNullableFilter<"shifts"> | Date | string | null
+    start_time?: StringNullableFilter<"shifts"> | string | null
+    end_time?: StringNullableFilter<"shifts"> | string | null
     employee?: XOR<EmployeesScalarRelationFilter, employeesWhereInput>
     organization?: XOR<OrganizationsScalarRelationFilter, organizationsWhereInput>
   }, "id">
@@ -8563,30 +10050,106 @@ export namespace Prisma {
     employee_id?: IntWithAggregatesFilter<"shifts"> | number
     organization_id?: IntWithAggregatesFilter<"shifts"> | number
     shift_date?: DateTimeWithAggregatesFilter<"shifts"> | Date | string
-    start_time?: DateTimeNullableWithAggregatesFilter<"shifts"> | Date | string | null
-    end_time?: DateTimeNullableWithAggregatesFilter<"shifts"> | Date | string | null
+    start_time?: StringNullableWithAggregatesFilter<"shifts"> | string | null
+    end_time?: StringNullableWithAggregatesFilter<"shifts"> | string | null
+  }
+
+  export type duty_officersWhereInput = {
+    AND?: duty_officersWhereInput | duty_officersWhereInput[]
+    OR?: duty_officersWhereInput[]
+    NOT?: duty_officersWhereInput | duty_officersWhereInput[]
+    id?: IntFilter<"duty_officers"> | number
+    position?: StringFilter<"duty_officers"> | string
+    phones?: StringFilter<"duty_officers"> | string
+    category_id?: IntFilter<"duty_officers"> | number
+    subcategory_id?: IntNullableFilter<"duty_officers"> | number | null
+    organization_id?: IntFilter<"duty_officers"> | number
+    category?: XOR<CategoriesScalarRelationFilter, categoriesWhereInput>
+    subcategory?: XOR<SubcategoriesNullableScalarRelationFilter, subcategoriesWhereInput> | null
+    organization?: XOR<OrganizationsNullableScalarRelationFilter, organizationsWhereInput> | null
+  }
+
+  export type duty_officersOrderByWithRelationInput = {
+    id?: SortOrder
+    position?: SortOrder
+    phones?: SortOrder
+    category_id?: SortOrder
+    subcategory_id?: SortOrderInput | SortOrder
+    organization_id?: SortOrder
+    category?: categoriesOrderByWithRelationInput
+    subcategory?: subcategoriesOrderByWithRelationInput
+    organization?: organizationsOrderByWithRelationInput
+  }
+
+  export type duty_officersWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: duty_officersWhereInput | duty_officersWhereInput[]
+    OR?: duty_officersWhereInput[]
+    NOT?: duty_officersWhereInput | duty_officersWhereInput[]
+    position?: StringFilter<"duty_officers"> | string
+    phones?: StringFilter<"duty_officers"> | string
+    category_id?: IntFilter<"duty_officers"> | number
+    subcategory_id?: IntNullableFilter<"duty_officers"> | number | null
+    organization_id?: IntFilter<"duty_officers"> | number
+    category?: XOR<CategoriesScalarRelationFilter, categoriesWhereInput>
+    subcategory?: XOR<SubcategoriesNullableScalarRelationFilter, subcategoriesWhereInput> | null
+    organization?: XOR<OrganizationsNullableScalarRelationFilter, organizationsWhereInput> | null
+  }, "id">
+
+  export type duty_officersOrderByWithAggregationInput = {
+    id?: SortOrder
+    position?: SortOrder
+    phones?: SortOrder
+    category_id?: SortOrder
+    subcategory_id?: SortOrderInput | SortOrder
+    organization_id?: SortOrder
+    _count?: duty_officersCountOrderByAggregateInput
+    _avg?: duty_officersAvgOrderByAggregateInput
+    _max?: duty_officersMaxOrderByAggregateInput
+    _min?: duty_officersMinOrderByAggregateInput
+    _sum?: duty_officersSumOrderByAggregateInput
+  }
+
+  export type duty_officersScalarWhereWithAggregatesInput = {
+    AND?: duty_officersScalarWhereWithAggregatesInput | duty_officersScalarWhereWithAggregatesInput[]
+    OR?: duty_officersScalarWhereWithAggregatesInput[]
+    NOT?: duty_officersScalarWhereWithAggregatesInput | duty_officersScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"duty_officers"> | number
+    position?: StringWithAggregatesFilter<"duty_officers"> | string
+    phones?: StringWithAggregatesFilter<"duty_officers"> | string
+    category_id?: IntWithAggregatesFilter<"duty_officers"> | number
+    subcategory_id?: IntNullableWithAggregatesFilter<"duty_officers"> | number | null
+    organization_id?: IntWithAggregatesFilter<"duty_officers"> | number
   }
 
   export type categoriesCreateInput = {
     name: string
     subcategories?: subcategoriesCreateNestedManyWithoutCategoryInput
+    organizations?: organizationsCreateNestedManyWithoutCategoryInput
+    duty_officers?: duty_officersCreateNestedManyWithoutCategoryInput
   }
 
   export type categoriesUncheckedCreateInput = {
     id?: number
     name: string
     subcategories?: subcategoriesUncheckedCreateNestedManyWithoutCategoryInput
+    organizations?: organizationsUncheckedCreateNestedManyWithoutCategoryInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type categoriesUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     subcategories?: subcategoriesUpdateManyWithoutCategoryNestedInput
+    organizations?: organizationsUpdateManyWithoutCategoryNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutCategoryNestedInput
   }
 
   export type categoriesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     subcategories?: subcategoriesUncheckedUpdateManyWithoutCategoryNestedInput
+    organizations?: organizationsUncheckedUpdateManyWithoutCategoryNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type categoriesCreateManyInput = {
@@ -8658,38 +10221,47 @@ export namespace Prisma {
 
   export type organizationsCreateInput = {
     name: string
-    subcategory: subcategoriesCreateNestedOneWithoutOrganizationsInput
+    subcategory?: subcategoriesCreateNestedOneWithoutOrganizationsInput
+    category: categoriesCreateNestedOneWithoutOrganizationsInput
     employees?: employeesCreateNestedManyWithoutOrganizationInput
     shifts?: shiftsCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersCreateNestedManyWithoutOrganizationInput
   }
 
   export type organizationsUncheckedCreateInput = {
     id?: number
     name: string
-    subcategory_id: number
+    subcategory_id?: number | null
+    category_id: number
     employees?: employeesUncheckedCreateNestedManyWithoutOrganizationInput
     shifts?: shiftsUncheckedCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type organizationsUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    subcategory?: subcategoriesUpdateOneRequiredWithoutOrganizationsNestedInput
+    subcategory?: subcategoriesUpdateOneWithoutOrganizationsNestedInput
+    category?: categoriesUpdateOneRequiredWithoutOrganizationsNestedInput
     employees?: employeesUpdateManyWithoutOrganizationNestedInput
     shifts?: shiftsUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutOrganizationNestedInput
   }
 
   export type organizationsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    subcategory_id?: IntFieldUpdateOperationsInput | number
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    category_id?: IntFieldUpdateOperationsInput | number
     employees?: employeesUncheckedUpdateManyWithoutOrganizationNestedInput
     shifts?: shiftsUncheckedUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type organizationsCreateManyInput = {
     id?: number
     name: string
-    subcategory_id: number
+    subcategory_id?: number | null
+    category_id: number
   }
 
   export type organizationsUpdateManyMutationInput = {
@@ -8699,7 +10271,8 @@ export namespace Prisma {
   export type organizationsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    subcategory_id?: IntFieldUpdateOperationsInput | number
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    category_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type phonesCreateInput = {
@@ -8744,6 +10317,7 @@ export namespace Prisma {
     name: string
     category: categoriesCreateNestedOneWithoutSubcategoriesInput
     organizations?: organizationsCreateNestedManyWithoutSubcategoryInput
+    duty_officers?: duty_officersCreateNestedManyWithoutSubcategoryInput
   }
 
   export type subcategoriesUncheckedCreateInput = {
@@ -8751,12 +10325,14 @@ export namespace Prisma {
     name: string
     category_id: number
     organizations?: organizationsUncheckedCreateNestedManyWithoutSubcategoryInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutSubcategoryInput
   }
 
   export type subcategoriesUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     category?: categoriesUpdateOneRequiredWithoutSubcategoriesNestedInput
     organizations?: organizationsUpdateManyWithoutSubcategoryNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type subcategoriesUncheckedUpdateInput = {
@@ -8764,6 +10340,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     category_id?: IntFieldUpdateOperationsInput | number
     organizations?: organizationsUncheckedUpdateManyWithoutSubcategoryNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type subcategoriesCreateManyInput = {
@@ -8784,8 +10361,8 @@ export namespace Prisma {
 
   export type shiftsCreateInput = {
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
     employee: employeesCreateNestedOneWithoutShiftsInput
     organization: organizationsCreateNestedOneWithoutShiftsInput
   }
@@ -8795,14 +10372,14 @@ export namespace Prisma {
     employee_id: number
     organization_id: number
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
   }
 
   export type shiftsUpdateInput = {
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
     employee?: employeesUpdateOneRequiredWithoutShiftsNestedInput
     organization?: organizationsUpdateOneRequiredWithoutShiftsNestedInput
   }
@@ -8812,8 +10389,8 @@ export namespace Prisma {
     employee_id?: IntFieldUpdateOperationsInput | number
     organization_id?: IntFieldUpdateOperationsInput | number
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type shiftsCreateManyInput = {
@@ -8821,14 +10398,14 @@ export namespace Prisma {
     employee_id: number
     organization_id: number
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
   }
 
   export type shiftsUpdateManyMutationInput = {
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type shiftsUncheckedUpdateManyInput = {
@@ -8836,8 +10413,65 @@ export namespace Prisma {
     employee_id?: IntFieldUpdateOperationsInput | number
     organization_id?: IntFieldUpdateOperationsInput | number
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type duty_officersCreateInput = {
+    position: string
+    phones: string
+    category: categoriesCreateNestedOneWithoutDuty_officersInput
+    subcategory?: subcategoriesCreateNestedOneWithoutDuty_officersInput
+    organization?: organizationsCreateNestedOneWithoutDuty_officersInput
+  }
+
+  export type duty_officersUncheckedCreateInput = {
+    id?: number
+    position: string
+    phones: string
+    category_id: number
+    subcategory_id?: number | null
+    organization_id: number
+  }
+
+  export type duty_officersUpdateInput = {
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category?: categoriesUpdateOneRequiredWithoutDuty_officersNestedInput
+    subcategory?: subcategoriesUpdateOneWithoutDuty_officersNestedInput
+    organization?: organizationsUpdateOneWithoutDuty_officersNestedInput
+  }
+
+  export type duty_officersUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    organization_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type duty_officersCreateManyInput = {
+    id?: number
+    position: string
+    phones: string
+    category_id: number
+    subcategory_id?: number | null
+    organization_id: number
+  }
+
+  export type duty_officersUpdateManyMutationInput = {
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type duty_officersUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    organization_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8872,7 +10506,27 @@ export namespace Prisma {
     none?: subcategoriesWhereInput
   }
 
+  export type OrganizationsListRelationFilter = {
+    every?: organizationsWhereInput
+    some?: organizationsWhereInput
+    none?: organizationsWhereInput
+  }
+
+  export type Duty_officersListRelationFilter = {
+    every?: duty_officersWhereInput
+    some?: duty_officersWhereInput
+    none?: duty_officersWhereInput
+  }
+
   export type subcategoriesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type organizationsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type duty_officersOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8994,15 +10648,36 @@ export namespace Prisma {
     organization_id?: SortOrder
   }
 
-  export type SubcategoriesScalarRelationFilter = {
-    is?: subcategoriesWhereInput
-    isNot?: subcategoriesWhereInput
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type SubcategoriesNullableScalarRelationFilter = {
+    is?: subcategoriesWhereInput | null
+    isNot?: subcategoriesWhereInput | null
+  }
+
+  export type CategoriesScalarRelationFilter = {
+    is?: categoriesWhereInput
+    isNot?: categoriesWhereInput
   }
 
   export type EmployeesListRelationFilter = {
     every?: employeesWhereInput
     some?: employeesWhereInput
     none?: employeesWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type employeesOrderByRelationAggregateInput = {
@@ -9013,28 +10688,49 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     subcategory_id?: SortOrder
+    category_id?: SortOrder
   }
 
   export type organizationsAvgOrderByAggregateInput = {
     id?: SortOrder
     subcategory_id?: SortOrder
+    category_id?: SortOrder
   }
 
   export type organizationsMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     subcategory_id?: SortOrder
+    category_id?: SortOrder
   }
 
   export type organizationsMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     subcategory_id?: SortOrder
+    category_id?: SortOrder
   }
 
   export type organizationsSumOrderByAggregateInput = {
     id?: SortOrder
     subcategory_id?: SortOrder
+    category_id?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EmployeesScalarRelationFilter = {
@@ -9073,21 +10769,6 @@ export namespace Prisma {
   export type phonesSumOrderByAggregateInput = {
     id?: SortOrder
     employee_id?: SortOrder
-  }
-
-  export type CategoriesScalarRelationFilter = {
-    is?: categoriesWhereInput
-    isNot?: categoriesWhereInput
-  }
-
-  export type OrganizationsListRelationFilter = {
-    every?: organizationsWhereInput
-    some?: organizationsWhereInput
-    none?: organizationsWhereInput
-  }
-
-  export type organizationsOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type subcategoriesNameCategory_idCompoundUniqueInput = {
@@ -9134,20 +10815,19 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type shiftsCountOrderByAggregateInput = {
@@ -9203,18 +10883,68 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type OrganizationsNullableScalarRelationFilter = {
+    is?: organizationsWhereInput | null
+    isNot?: organizationsWhereInput | null
+  }
+
+  export type duty_officersCountOrderByAggregateInput = {
+    id?: SortOrder
+    position?: SortOrder
+    phones?: SortOrder
+    category_id?: SortOrder
+    subcategory_id?: SortOrder
+    organization_id?: SortOrder
+  }
+
+  export type duty_officersAvgOrderByAggregateInput = {
+    id?: SortOrder
+    category_id?: SortOrder
+    subcategory_id?: SortOrder
+    organization_id?: SortOrder
+  }
+
+  export type duty_officersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    position?: SortOrder
+    phones?: SortOrder
+    category_id?: SortOrder
+    subcategory_id?: SortOrder
+    organization_id?: SortOrder
+  }
+
+  export type duty_officersMinOrderByAggregateInput = {
+    id?: SortOrder
+    position?: SortOrder
+    phones?: SortOrder
+    category_id?: SortOrder
+    subcategory_id?: SortOrder
+    organization_id?: SortOrder
+  }
+
+  export type duty_officersSumOrderByAggregateInput = {
+    id?: SortOrder
+    category_id?: SortOrder
+    subcategory_id?: SortOrder
+    organization_id?: SortOrder
   }
 
   export type subcategoriesCreateNestedManyWithoutCategoryInput = {
@@ -9224,11 +10954,39 @@ export namespace Prisma {
     connect?: subcategoriesWhereUniqueInput | subcategoriesWhereUniqueInput[]
   }
 
+  export type organizationsCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<organizationsCreateWithoutCategoryInput, organizationsUncheckedCreateWithoutCategoryInput> | organizationsCreateWithoutCategoryInput[] | organizationsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: organizationsCreateOrConnectWithoutCategoryInput | organizationsCreateOrConnectWithoutCategoryInput[]
+    createMany?: organizationsCreateManyCategoryInputEnvelope
+    connect?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+  }
+
+  export type duty_officersCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<duty_officersCreateWithoutCategoryInput, duty_officersUncheckedCreateWithoutCategoryInput> | duty_officersCreateWithoutCategoryInput[] | duty_officersUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutCategoryInput | duty_officersCreateOrConnectWithoutCategoryInput[]
+    createMany?: duty_officersCreateManyCategoryInputEnvelope
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+  }
+
   export type subcategoriesUncheckedCreateNestedManyWithoutCategoryInput = {
     create?: XOR<subcategoriesCreateWithoutCategoryInput, subcategoriesUncheckedCreateWithoutCategoryInput> | subcategoriesCreateWithoutCategoryInput[] | subcategoriesUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: subcategoriesCreateOrConnectWithoutCategoryInput | subcategoriesCreateOrConnectWithoutCategoryInput[]
     createMany?: subcategoriesCreateManyCategoryInputEnvelope
     connect?: subcategoriesWhereUniqueInput | subcategoriesWhereUniqueInput[]
+  }
+
+  export type organizationsUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<organizationsCreateWithoutCategoryInput, organizationsUncheckedCreateWithoutCategoryInput> | organizationsCreateWithoutCategoryInput[] | organizationsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: organizationsCreateOrConnectWithoutCategoryInput | organizationsCreateOrConnectWithoutCategoryInput[]
+    createMany?: organizationsCreateManyCategoryInputEnvelope
+    connect?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+  }
+
+  export type duty_officersUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<duty_officersCreateWithoutCategoryInput, duty_officersUncheckedCreateWithoutCategoryInput> | duty_officersCreateWithoutCategoryInput[] | duty_officersUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutCategoryInput | duty_officersCreateOrConnectWithoutCategoryInput[]
+    createMany?: duty_officersCreateManyCategoryInputEnvelope
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9247,6 +11005,34 @@ export namespace Prisma {
     update?: subcategoriesUpdateWithWhereUniqueWithoutCategoryInput | subcategoriesUpdateWithWhereUniqueWithoutCategoryInput[]
     updateMany?: subcategoriesUpdateManyWithWhereWithoutCategoryInput | subcategoriesUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: subcategoriesScalarWhereInput | subcategoriesScalarWhereInput[]
+  }
+
+  export type organizationsUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<organizationsCreateWithoutCategoryInput, organizationsUncheckedCreateWithoutCategoryInput> | organizationsCreateWithoutCategoryInput[] | organizationsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: organizationsCreateOrConnectWithoutCategoryInput | organizationsCreateOrConnectWithoutCategoryInput[]
+    upsert?: organizationsUpsertWithWhereUniqueWithoutCategoryInput | organizationsUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: organizationsCreateManyCategoryInputEnvelope
+    set?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+    disconnect?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+    delete?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+    connect?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+    update?: organizationsUpdateWithWhereUniqueWithoutCategoryInput | organizationsUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: organizationsUpdateManyWithWhereWithoutCategoryInput | organizationsUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: organizationsScalarWhereInput | organizationsScalarWhereInput[]
+  }
+
+  export type duty_officersUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<duty_officersCreateWithoutCategoryInput, duty_officersUncheckedCreateWithoutCategoryInput> | duty_officersCreateWithoutCategoryInput[] | duty_officersUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutCategoryInput | duty_officersCreateOrConnectWithoutCategoryInput[]
+    upsert?: duty_officersUpsertWithWhereUniqueWithoutCategoryInput | duty_officersUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: duty_officersCreateManyCategoryInputEnvelope
+    set?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    disconnect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    delete?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    update?: duty_officersUpdateWithWhereUniqueWithoutCategoryInput | duty_officersUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: duty_officersUpdateManyWithWhereWithoutCategoryInput | duty_officersUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: duty_officersScalarWhereInput | duty_officersScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -9269,6 +11055,34 @@ export namespace Prisma {
     update?: subcategoriesUpdateWithWhereUniqueWithoutCategoryInput | subcategoriesUpdateWithWhereUniqueWithoutCategoryInput[]
     updateMany?: subcategoriesUpdateManyWithWhereWithoutCategoryInput | subcategoriesUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: subcategoriesScalarWhereInput | subcategoriesScalarWhereInput[]
+  }
+
+  export type organizationsUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<organizationsCreateWithoutCategoryInput, organizationsUncheckedCreateWithoutCategoryInput> | organizationsCreateWithoutCategoryInput[] | organizationsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: organizationsCreateOrConnectWithoutCategoryInput | organizationsCreateOrConnectWithoutCategoryInput[]
+    upsert?: organizationsUpsertWithWhereUniqueWithoutCategoryInput | organizationsUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: organizationsCreateManyCategoryInputEnvelope
+    set?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+    disconnect?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+    delete?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+    connect?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+    update?: organizationsUpdateWithWhereUniqueWithoutCategoryInput | organizationsUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: organizationsUpdateManyWithWhereWithoutCategoryInput | organizationsUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: organizationsScalarWhereInput | organizationsScalarWhereInput[]
+  }
+
+  export type duty_officersUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<duty_officersCreateWithoutCategoryInput, duty_officersUncheckedCreateWithoutCategoryInput> | duty_officersCreateWithoutCategoryInput[] | duty_officersUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutCategoryInput | duty_officersCreateOrConnectWithoutCategoryInput[]
+    upsert?: duty_officersUpsertWithWhereUniqueWithoutCategoryInput | duty_officersUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: duty_officersCreateManyCategoryInputEnvelope
+    set?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    disconnect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    delete?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    update?: duty_officersUpdateWithWhereUniqueWithoutCategoryInput | duty_officersUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: duty_officersUpdateManyWithWhereWithoutCategoryInput | duty_officersUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: duty_officersScalarWhereInput | duty_officersScalarWhereInput[]
   }
 
   export type organizationsCreateNestedOneWithoutEmployeesInput = {
@@ -9375,6 +11189,12 @@ export namespace Prisma {
     connect?: subcategoriesWhereUniqueInput
   }
 
+  export type categoriesCreateNestedOneWithoutOrganizationsInput = {
+    create?: XOR<categoriesCreateWithoutOrganizationsInput, categoriesUncheckedCreateWithoutOrganizationsInput>
+    connectOrCreate?: categoriesCreateOrConnectWithoutOrganizationsInput
+    connect?: categoriesWhereUniqueInput
+  }
+
   export type employeesCreateNestedManyWithoutOrganizationInput = {
     create?: XOR<employeesCreateWithoutOrganizationInput, employeesUncheckedCreateWithoutOrganizationInput> | employeesCreateWithoutOrganizationInput[] | employeesUncheckedCreateWithoutOrganizationInput[]
     connectOrCreate?: employeesCreateOrConnectWithoutOrganizationInput | employeesCreateOrConnectWithoutOrganizationInput[]
@@ -9387,6 +11207,13 @@ export namespace Prisma {
     connectOrCreate?: shiftsCreateOrConnectWithoutOrganizationInput | shiftsCreateOrConnectWithoutOrganizationInput[]
     createMany?: shiftsCreateManyOrganizationInputEnvelope
     connect?: shiftsWhereUniqueInput | shiftsWhereUniqueInput[]
+  }
+
+  export type duty_officersCreateNestedManyWithoutOrganizationInput = {
+    create?: XOR<duty_officersCreateWithoutOrganizationInput, duty_officersUncheckedCreateWithoutOrganizationInput> | duty_officersCreateWithoutOrganizationInput[] | duty_officersUncheckedCreateWithoutOrganizationInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutOrganizationInput | duty_officersCreateOrConnectWithoutOrganizationInput[]
+    createMany?: duty_officersCreateManyOrganizationInputEnvelope
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
   }
 
   export type employeesUncheckedCreateNestedManyWithoutOrganizationInput = {
@@ -9403,12 +11230,29 @@ export namespace Prisma {
     connect?: shiftsWhereUniqueInput | shiftsWhereUniqueInput[]
   }
 
-  export type subcategoriesUpdateOneRequiredWithoutOrganizationsNestedInput = {
+  export type duty_officersUncheckedCreateNestedManyWithoutOrganizationInput = {
+    create?: XOR<duty_officersCreateWithoutOrganizationInput, duty_officersUncheckedCreateWithoutOrganizationInput> | duty_officersCreateWithoutOrganizationInput[] | duty_officersUncheckedCreateWithoutOrganizationInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutOrganizationInput | duty_officersCreateOrConnectWithoutOrganizationInput[]
+    createMany?: duty_officersCreateManyOrganizationInputEnvelope
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+  }
+
+  export type subcategoriesUpdateOneWithoutOrganizationsNestedInput = {
     create?: XOR<subcategoriesCreateWithoutOrganizationsInput, subcategoriesUncheckedCreateWithoutOrganizationsInput>
     connectOrCreate?: subcategoriesCreateOrConnectWithoutOrganizationsInput
     upsert?: subcategoriesUpsertWithoutOrganizationsInput
+    disconnect?: subcategoriesWhereInput | boolean
+    delete?: subcategoriesWhereInput | boolean
     connect?: subcategoriesWhereUniqueInput
     update?: XOR<XOR<subcategoriesUpdateToOneWithWhereWithoutOrganizationsInput, subcategoriesUpdateWithoutOrganizationsInput>, subcategoriesUncheckedUpdateWithoutOrganizationsInput>
+  }
+
+  export type categoriesUpdateOneRequiredWithoutOrganizationsNestedInput = {
+    create?: XOR<categoriesCreateWithoutOrganizationsInput, categoriesUncheckedCreateWithoutOrganizationsInput>
+    connectOrCreate?: categoriesCreateOrConnectWithoutOrganizationsInput
+    upsert?: categoriesUpsertWithoutOrganizationsInput
+    connect?: categoriesWhereUniqueInput
+    update?: XOR<XOR<categoriesUpdateToOneWithWhereWithoutOrganizationsInput, categoriesUpdateWithoutOrganizationsInput>, categoriesUncheckedUpdateWithoutOrganizationsInput>
   }
 
   export type employeesUpdateManyWithoutOrganizationNestedInput = {
@@ -9439,6 +11283,28 @@ export namespace Prisma {
     deleteMany?: shiftsScalarWhereInput | shiftsScalarWhereInput[]
   }
 
+  export type duty_officersUpdateManyWithoutOrganizationNestedInput = {
+    create?: XOR<duty_officersCreateWithoutOrganizationInput, duty_officersUncheckedCreateWithoutOrganizationInput> | duty_officersCreateWithoutOrganizationInput[] | duty_officersUncheckedCreateWithoutOrganizationInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutOrganizationInput | duty_officersCreateOrConnectWithoutOrganizationInput[]
+    upsert?: duty_officersUpsertWithWhereUniqueWithoutOrganizationInput | duty_officersUpsertWithWhereUniqueWithoutOrganizationInput[]
+    createMany?: duty_officersCreateManyOrganizationInputEnvelope
+    set?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    disconnect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    delete?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    update?: duty_officersUpdateWithWhereUniqueWithoutOrganizationInput | duty_officersUpdateWithWhereUniqueWithoutOrganizationInput[]
+    updateMany?: duty_officersUpdateManyWithWhereWithoutOrganizationInput | duty_officersUpdateManyWithWhereWithoutOrganizationInput[]
+    deleteMany?: duty_officersScalarWhereInput | duty_officersScalarWhereInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type employeesUncheckedUpdateManyWithoutOrganizationNestedInput = {
     create?: XOR<employeesCreateWithoutOrganizationInput, employeesUncheckedCreateWithoutOrganizationInput> | employeesCreateWithoutOrganizationInput[] | employeesUncheckedCreateWithoutOrganizationInput[]
     connectOrCreate?: employeesCreateOrConnectWithoutOrganizationInput | employeesCreateOrConnectWithoutOrganizationInput[]
@@ -9465,6 +11331,20 @@ export namespace Prisma {
     update?: shiftsUpdateWithWhereUniqueWithoutOrganizationInput | shiftsUpdateWithWhereUniqueWithoutOrganizationInput[]
     updateMany?: shiftsUpdateManyWithWhereWithoutOrganizationInput | shiftsUpdateManyWithWhereWithoutOrganizationInput[]
     deleteMany?: shiftsScalarWhereInput | shiftsScalarWhereInput[]
+  }
+
+  export type duty_officersUncheckedUpdateManyWithoutOrganizationNestedInput = {
+    create?: XOR<duty_officersCreateWithoutOrganizationInput, duty_officersUncheckedCreateWithoutOrganizationInput> | duty_officersCreateWithoutOrganizationInput[] | duty_officersUncheckedCreateWithoutOrganizationInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutOrganizationInput | duty_officersCreateOrConnectWithoutOrganizationInput[]
+    upsert?: duty_officersUpsertWithWhereUniqueWithoutOrganizationInput | duty_officersUpsertWithWhereUniqueWithoutOrganizationInput[]
+    createMany?: duty_officersCreateManyOrganizationInputEnvelope
+    set?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    disconnect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    delete?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    update?: duty_officersUpdateWithWhereUniqueWithoutOrganizationInput | duty_officersUpdateWithWhereUniqueWithoutOrganizationInput[]
+    updateMany?: duty_officersUpdateManyWithWhereWithoutOrganizationInput | duty_officersUpdateManyWithWhereWithoutOrganizationInput[]
+    deleteMany?: duty_officersScalarWhereInput | duty_officersScalarWhereInput[]
   }
 
   export type employeesCreateNestedOneWithoutPhonesInput = {
@@ -9494,11 +11374,25 @@ export namespace Prisma {
     connect?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
   }
 
+  export type duty_officersCreateNestedManyWithoutSubcategoryInput = {
+    create?: XOR<duty_officersCreateWithoutSubcategoryInput, duty_officersUncheckedCreateWithoutSubcategoryInput> | duty_officersCreateWithoutSubcategoryInput[] | duty_officersUncheckedCreateWithoutSubcategoryInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutSubcategoryInput | duty_officersCreateOrConnectWithoutSubcategoryInput[]
+    createMany?: duty_officersCreateManySubcategoryInputEnvelope
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+  }
+
   export type organizationsUncheckedCreateNestedManyWithoutSubcategoryInput = {
     create?: XOR<organizationsCreateWithoutSubcategoryInput, organizationsUncheckedCreateWithoutSubcategoryInput> | organizationsCreateWithoutSubcategoryInput[] | organizationsUncheckedCreateWithoutSubcategoryInput[]
     connectOrCreate?: organizationsCreateOrConnectWithoutSubcategoryInput | organizationsCreateOrConnectWithoutSubcategoryInput[]
     createMany?: organizationsCreateManySubcategoryInputEnvelope
     connect?: organizationsWhereUniqueInput | organizationsWhereUniqueInput[]
+  }
+
+  export type duty_officersUncheckedCreateNestedManyWithoutSubcategoryInput = {
+    create?: XOR<duty_officersCreateWithoutSubcategoryInput, duty_officersUncheckedCreateWithoutSubcategoryInput> | duty_officersCreateWithoutSubcategoryInput[] | duty_officersUncheckedCreateWithoutSubcategoryInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutSubcategoryInput | duty_officersCreateOrConnectWithoutSubcategoryInput[]
+    createMany?: duty_officersCreateManySubcategoryInputEnvelope
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
   }
 
   export type categoriesUpdateOneRequiredWithoutSubcategoriesNestedInput = {
@@ -9523,6 +11417,20 @@ export namespace Prisma {
     deleteMany?: organizationsScalarWhereInput | organizationsScalarWhereInput[]
   }
 
+  export type duty_officersUpdateManyWithoutSubcategoryNestedInput = {
+    create?: XOR<duty_officersCreateWithoutSubcategoryInput, duty_officersUncheckedCreateWithoutSubcategoryInput> | duty_officersCreateWithoutSubcategoryInput[] | duty_officersUncheckedCreateWithoutSubcategoryInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutSubcategoryInput | duty_officersCreateOrConnectWithoutSubcategoryInput[]
+    upsert?: duty_officersUpsertWithWhereUniqueWithoutSubcategoryInput | duty_officersUpsertWithWhereUniqueWithoutSubcategoryInput[]
+    createMany?: duty_officersCreateManySubcategoryInputEnvelope
+    set?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    disconnect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    delete?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    update?: duty_officersUpdateWithWhereUniqueWithoutSubcategoryInput | duty_officersUpdateWithWhereUniqueWithoutSubcategoryInput[]
+    updateMany?: duty_officersUpdateManyWithWhereWithoutSubcategoryInput | duty_officersUpdateManyWithWhereWithoutSubcategoryInput[]
+    deleteMany?: duty_officersScalarWhereInput | duty_officersScalarWhereInput[]
+  }
+
   export type organizationsUncheckedUpdateManyWithoutSubcategoryNestedInput = {
     create?: XOR<organizationsCreateWithoutSubcategoryInput, organizationsUncheckedCreateWithoutSubcategoryInput> | organizationsCreateWithoutSubcategoryInput[] | organizationsUncheckedCreateWithoutSubcategoryInput[]
     connectOrCreate?: organizationsCreateOrConnectWithoutSubcategoryInput | organizationsCreateOrConnectWithoutSubcategoryInput[]
@@ -9535,6 +11443,20 @@ export namespace Prisma {
     update?: organizationsUpdateWithWhereUniqueWithoutSubcategoryInput | organizationsUpdateWithWhereUniqueWithoutSubcategoryInput[]
     updateMany?: organizationsUpdateManyWithWhereWithoutSubcategoryInput | organizationsUpdateManyWithWhereWithoutSubcategoryInput[]
     deleteMany?: organizationsScalarWhereInput | organizationsScalarWhereInput[]
+  }
+
+  export type duty_officersUncheckedUpdateManyWithoutSubcategoryNestedInput = {
+    create?: XOR<duty_officersCreateWithoutSubcategoryInput, duty_officersUncheckedCreateWithoutSubcategoryInput> | duty_officersCreateWithoutSubcategoryInput[] | duty_officersUncheckedCreateWithoutSubcategoryInput[]
+    connectOrCreate?: duty_officersCreateOrConnectWithoutSubcategoryInput | duty_officersCreateOrConnectWithoutSubcategoryInput[]
+    upsert?: duty_officersUpsertWithWhereUniqueWithoutSubcategoryInput | duty_officersUpsertWithWhereUniqueWithoutSubcategoryInput[]
+    createMany?: duty_officersCreateManySubcategoryInputEnvelope
+    set?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    disconnect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    delete?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    connect?: duty_officersWhereUniqueInput | duty_officersWhereUniqueInput[]
+    update?: duty_officersUpdateWithWhereUniqueWithoutSubcategoryInput | duty_officersUpdateWithWhereUniqueWithoutSubcategoryInput[]
+    updateMany?: duty_officersUpdateManyWithWhereWithoutSubcategoryInput | duty_officersUpdateManyWithWhereWithoutSubcategoryInput[]
+    deleteMany?: duty_officersScalarWhereInput | duty_officersScalarWhereInput[]
   }
 
   export type employeesCreateNestedOneWithoutShiftsInput = {
@@ -9553,8 +11475,8 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type employeesUpdateOneRequiredWithoutShiftsNestedInput = {
@@ -9571,6 +11493,52 @@ export namespace Prisma {
     upsert?: organizationsUpsertWithoutShiftsInput
     connect?: organizationsWhereUniqueInput
     update?: XOR<XOR<organizationsUpdateToOneWithWhereWithoutShiftsInput, organizationsUpdateWithoutShiftsInput>, organizationsUncheckedUpdateWithoutShiftsInput>
+  }
+
+  export type categoriesCreateNestedOneWithoutDuty_officersInput = {
+    create?: XOR<categoriesCreateWithoutDuty_officersInput, categoriesUncheckedCreateWithoutDuty_officersInput>
+    connectOrCreate?: categoriesCreateOrConnectWithoutDuty_officersInput
+    connect?: categoriesWhereUniqueInput
+  }
+
+  export type subcategoriesCreateNestedOneWithoutDuty_officersInput = {
+    create?: XOR<subcategoriesCreateWithoutDuty_officersInput, subcategoriesUncheckedCreateWithoutDuty_officersInput>
+    connectOrCreate?: subcategoriesCreateOrConnectWithoutDuty_officersInput
+    connect?: subcategoriesWhereUniqueInput
+  }
+
+  export type organizationsCreateNestedOneWithoutDuty_officersInput = {
+    create?: XOR<organizationsCreateWithoutDuty_officersInput, organizationsUncheckedCreateWithoutDuty_officersInput>
+    connectOrCreate?: organizationsCreateOrConnectWithoutDuty_officersInput
+    connect?: organizationsWhereUniqueInput
+  }
+
+  export type categoriesUpdateOneRequiredWithoutDuty_officersNestedInput = {
+    create?: XOR<categoriesCreateWithoutDuty_officersInput, categoriesUncheckedCreateWithoutDuty_officersInput>
+    connectOrCreate?: categoriesCreateOrConnectWithoutDuty_officersInput
+    upsert?: categoriesUpsertWithoutDuty_officersInput
+    connect?: categoriesWhereUniqueInput
+    update?: XOR<XOR<categoriesUpdateToOneWithWhereWithoutDuty_officersInput, categoriesUpdateWithoutDuty_officersInput>, categoriesUncheckedUpdateWithoutDuty_officersInput>
+  }
+
+  export type subcategoriesUpdateOneWithoutDuty_officersNestedInput = {
+    create?: XOR<subcategoriesCreateWithoutDuty_officersInput, subcategoriesUncheckedCreateWithoutDuty_officersInput>
+    connectOrCreate?: subcategoriesCreateOrConnectWithoutDuty_officersInput
+    upsert?: subcategoriesUpsertWithoutDuty_officersInput
+    disconnect?: subcategoriesWhereInput | boolean
+    delete?: subcategoriesWhereInput | boolean
+    connect?: subcategoriesWhereUniqueInput
+    update?: XOR<XOR<subcategoriesUpdateToOneWithWhereWithoutDuty_officersInput, subcategoriesUpdateWithoutDuty_officersInput>, subcategoriesUncheckedUpdateWithoutDuty_officersInput>
+  }
+
+  export type organizationsUpdateOneWithoutDuty_officersNestedInput = {
+    create?: XOR<organizationsCreateWithoutDuty_officersInput, organizationsUncheckedCreateWithoutDuty_officersInput>
+    connectOrCreate?: organizationsCreateOrConnectWithoutDuty_officersInput
+    upsert?: organizationsUpsertWithoutDuty_officersInput
+    disconnect?: organizationsWhereInput | boolean
+    delete?: organizationsWhereInput | boolean
+    connect?: organizationsWhereUniqueInput
+    update?: XOR<XOR<organizationsUpdateToOneWithWhereWithoutDuty_officersInput, organizationsUpdateWithoutDuty_officersInput>, organizationsUncheckedUpdateWithoutDuty_officersInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -9642,6 +11610,44 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -9653,15 +11659,18 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -9678,40 +11687,34 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type subcategoriesCreateWithoutCategoryInput = {
     name: string
     organizations?: organizationsCreateNestedManyWithoutSubcategoryInput
+    duty_officers?: duty_officersCreateNestedManyWithoutSubcategoryInput
   }
 
   export type subcategoriesUncheckedCreateWithoutCategoryInput = {
     id?: number
     name: string
     organizations?: organizationsUncheckedCreateNestedManyWithoutSubcategoryInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutSubcategoryInput
   }
 
   export type subcategoriesCreateOrConnectWithoutCategoryInput = {
@@ -9721,6 +11724,58 @@ export namespace Prisma {
 
   export type subcategoriesCreateManyCategoryInputEnvelope = {
     data: subcategoriesCreateManyCategoryInput | subcategoriesCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type organizationsCreateWithoutCategoryInput = {
+    name: string
+    subcategory?: subcategoriesCreateNestedOneWithoutOrganizationsInput
+    employees?: employeesCreateNestedManyWithoutOrganizationInput
+    shifts?: shiftsCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersCreateNestedManyWithoutOrganizationInput
+  }
+
+  export type organizationsUncheckedCreateWithoutCategoryInput = {
+    id?: number
+    name: string
+    subcategory_id?: number | null
+    employees?: employeesUncheckedCreateNestedManyWithoutOrganizationInput
+    shifts?: shiftsUncheckedCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutOrganizationInput
+  }
+
+  export type organizationsCreateOrConnectWithoutCategoryInput = {
+    where: organizationsWhereUniqueInput
+    create: XOR<organizationsCreateWithoutCategoryInput, organizationsUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type organizationsCreateManyCategoryInputEnvelope = {
+    data: organizationsCreateManyCategoryInput | organizationsCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type duty_officersCreateWithoutCategoryInput = {
+    position: string
+    phones: string
+    subcategory?: subcategoriesCreateNestedOneWithoutDuty_officersInput
+    organization?: organizationsCreateNestedOneWithoutDuty_officersInput
+  }
+
+  export type duty_officersUncheckedCreateWithoutCategoryInput = {
+    id?: number
+    position: string
+    phones: string
+    subcategory_id?: number | null
+    organization_id: number
+  }
+
+  export type duty_officersCreateOrConnectWithoutCategoryInput = {
+    where: duty_officersWhereUniqueInput
+    create: XOR<duty_officersCreateWithoutCategoryInput, duty_officersUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type duty_officersCreateManyCategoryInputEnvelope = {
+    data: duty_officersCreateManyCategoryInput | duty_officersCreateManyCategoryInput[]
     skipDuplicates?: boolean
   }
 
@@ -9749,17 +11804,75 @@ export namespace Prisma {
     category_id?: IntFilter<"subcategories"> | number
   }
 
+  export type organizationsUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: organizationsWhereUniqueInput
+    update: XOR<organizationsUpdateWithoutCategoryInput, organizationsUncheckedUpdateWithoutCategoryInput>
+    create: XOR<organizationsCreateWithoutCategoryInput, organizationsUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type organizationsUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: organizationsWhereUniqueInput
+    data: XOR<organizationsUpdateWithoutCategoryInput, organizationsUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type organizationsUpdateManyWithWhereWithoutCategoryInput = {
+    where: organizationsScalarWhereInput
+    data: XOR<organizationsUpdateManyMutationInput, organizationsUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type organizationsScalarWhereInput = {
+    AND?: organizationsScalarWhereInput | organizationsScalarWhereInput[]
+    OR?: organizationsScalarWhereInput[]
+    NOT?: organizationsScalarWhereInput | organizationsScalarWhereInput[]
+    id?: IntFilter<"organizations"> | number
+    name?: StringFilter<"organizations"> | string
+    subcategory_id?: IntNullableFilter<"organizations"> | number | null
+    category_id?: IntFilter<"organizations"> | number
+  }
+
+  export type duty_officersUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: duty_officersWhereUniqueInput
+    update: XOR<duty_officersUpdateWithoutCategoryInput, duty_officersUncheckedUpdateWithoutCategoryInput>
+    create: XOR<duty_officersCreateWithoutCategoryInput, duty_officersUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type duty_officersUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: duty_officersWhereUniqueInput
+    data: XOR<duty_officersUpdateWithoutCategoryInput, duty_officersUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type duty_officersUpdateManyWithWhereWithoutCategoryInput = {
+    where: duty_officersScalarWhereInput
+    data: XOR<duty_officersUpdateManyMutationInput, duty_officersUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type duty_officersScalarWhereInput = {
+    AND?: duty_officersScalarWhereInput | duty_officersScalarWhereInput[]
+    OR?: duty_officersScalarWhereInput[]
+    NOT?: duty_officersScalarWhereInput | duty_officersScalarWhereInput[]
+    id?: IntFilter<"duty_officers"> | number
+    position?: StringFilter<"duty_officers"> | string
+    phones?: StringFilter<"duty_officers"> | string
+    category_id?: IntFilter<"duty_officers"> | number
+    subcategory_id?: IntNullableFilter<"duty_officers"> | number | null
+    organization_id?: IntFilter<"duty_officers"> | number
+  }
+
   export type organizationsCreateWithoutEmployeesInput = {
     name: string
-    subcategory: subcategoriesCreateNestedOneWithoutOrganizationsInput
+    subcategory?: subcategoriesCreateNestedOneWithoutOrganizationsInput
+    category: categoriesCreateNestedOneWithoutOrganizationsInput
     shifts?: shiftsCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersCreateNestedManyWithoutOrganizationInput
   }
 
   export type organizationsUncheckedCreateWithoutEmployeesInput = {
     id?: number
     name: string
-    subcategory_id: number
+    subcategory_id?: number | null
+    category_id: number
     shifts?: shiftsUncheckedCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type organizationsCreateOrConnectWithoutEmployeesInput = {
@@ -9788,8 +11901,8 @@ export namespace Prisma {
 
   export type shiftsCreateWithoutEmployeeInput = {
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
     organization: organizationsCreateNestedOneWithoutShiftsInput
   }
 
@@ -9797,8 +11910,8 @@ export namespace Prisma {
     id?: number
     organization_id: number
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
   }
 
   export type shiftsCreateOrConnectWithoutEmployeeInput = {
@@ -9824,15 +11937,19 @@ export namespace Prisma {
 
   export type organizationsUpdateWithoutEmployeesInput = {
     name?: StringFieldUpdateOperationsInput | string
-    subcategory?: subcategoriesUpdateOneRequiredWithoutOrganizationsNestedInput
+    subcategory?: subcategoriesUpdateOneWithoutOrganizationsNestedInput
+    category?: categoriesUpdateOneRequiredWithoutOrganizationsNestedInput
     shifts?: shiftsUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutOrganizationNestedInput
   }
 
   export type organizationsUncheckedUpdateWithoutEmployeesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    subcategory_id?: IntFieldUpdateOperationsInput | number
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    category_id?: IntFieldUpdateOperationsInput | number
     shifts?: shiftsUncheckedUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type phonesUpsertWithWhereUniqueWithoutEmployeeInput = {
@@ -9884,24 +12001,44 @@ export namespace Prisma {
     employee_id?: IntFilter<"shifts"> | number
     organization_id?: IntFilter<"shifts"> | number
     shift_date?: DateTimeFilter<"shifts"> | Date | string
-    start_time?: DateTimeNullableFilter<"shifts"> | Date | string | null
-    end_time?: DateTimeNullableFilter<"shifts"> | Date | string | null
+    start_time?: StringNullableFilter<"shifts"> | string | null
+    end_time?: StringNullableFilter<"shifts"> | string | null
   }
 
   export type subcategoriesCreateWithoutOrganizationsInput = {
     name: string
     category: categoriesCreateNestedOneWithoutSubcategoriesInput
+    duty_officers?: duty_officersCreateNestedManyWithoutSubcategoryInput
   }
 
   export type subcategoriesUncheckedCreateWithoutOrganizationsInput = {
     id?: number
     name: string
     category_id: number
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutSubcategoryInput
   }
 
   export type subcategoriesCreateOrConnectWithoutOrganizationsInput = {
     where: subcategoriesWhereUniqueInput
     create: XOR<subcategoriesCreateWithoutOrganizationsInput, subcategoriesUncheckedCreateWithoutOrganizationsInput>
+  }
+
+  export type categoriesCreateWithoutOrganizationsInput = {
+    name: string
+    subcategories?: subcategoriesCreateNestedManyWithoutCategoryInput
+    duty_officers?: duty_officersCreateNestedManyWithoutCategoryInput
+  }
+
+  export type categoriesUncheckedCreateWithoutOrganizationsInput = {
+    id?: number
+    name: string
+    subcategories?: subcategoriesUncheckedCreateNestedManyWithoutCategoryInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type categoriesCreateOrConnectWithoutOrganizationsInput = {
+    where: categoriesWhereUniqueInput
+    create: XOR<categoriesCreateWithoutOrganizationsInput, categoriesUncheckedCreateWithoutOrganizationsInput>
   }
 
   export type employeesCreateWithoutOrganizationInput = {
@@ -9931,8 +12068,8 @@ export namespace Prisma {
 
   export type shiftsCreateWithoutOrganizationInput = {
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
     employee: employeesCreateNestedOneWithoutShiftsInput
   }
 
@@ -9940,8 +12077,8 @@ export namespace Prisma {
     id?: number
     employee_id: number
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
   }
 
   export type shiftsCreateOrConnectWithoutOrganizationInput = {
@@ -9951,6 +12088,31 @@ export namespace Prisma {
 
   export type shiftsCreateManyOrganizationInputEnvelope = {
     data: shiftsCreateManyOrganizationInput | shiftsCreateManyOrganizationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type duty_officersCreateWithoutOrganizationInput = {
+    position: string
+    phones: string
+    category: categoriesCreateNestedOneWithoutDuty_officersInput
+    subcategory?: subcategoriesCreateNestedOneWithoutDuty_officersInput
+  }
+
+  export type duty_officersUncheckedCreateWithoutOrganizationInput = {
+    id?: number
+    position: string
+    phones: string
+    category_id: number
+    subcategory_id?: number | null
+  }
+
+  export type duty_officersCreateOrConnectWithoutOrganizationInput = {
+    where: duty_officersWhereUniqueInput
+    create: XOR<duty_officersCreateWithoutOrganizationInput, duty_officersUncheckedCreateWithoutOrganizationInput>
+  }
+
+  export type duty_officersCreateManyOrganizationInputEnvelope = {
+    data: duty_officersCreateManyOrganizationInput | duty_officersCreateManyOrganizationInput[]
     skipDuplicates?: boolean
   }
 
@@ -9968,12 +12130,38 @@ export namespace Prisma {
   export type subcategoriesUpdateWithoutOrganizationsInput = {
     name?: StringFieldUpdateOperationsInput | string
     category?: categoriesUpdateOneRequiredWithoutSubcategoriesNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type subcategoriesUncheckedUpdateWithoutOrganizationsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     category_id?: IntFieldUpdateOperationsInput | number
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutSubcategoryNestedInput
+  }
+
+  export type categoriesUpsertWithoutOrganizationsInput = {
+    update: XOR<categoriesUpdateWithoutOrganizationsInput, categoriesUncheckedUpdateWithoutOrganizationsInput>
+    create: XOR<categoriesCreateWithoutOrganizationsInput, categoriesUncheckedCreateWithoutOrganizationsInput>
+    where?: categoriesWhereInput
+  }
+
+  export type categoriesUpdateToOneWithWhereWithoutOrganizationsInput = {
+    where?: categoriesWhereInput
+    data: XOR<categoriesUpdateWithoutOrganizationsInput, categoriesUncheckedUpdateWithoutOrganizationsInput>
+  }
+
+  export type categoriesUpdateWithoutOrganizationsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    subcategories?: subcategoriesUpdateManyWithoutCategoryNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type categoriesUncheckedUpdateWithoutOrganizationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    subcategories?: subcategoriesUncheckedUpdateManyWithoutCategoryNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type employeesUpsertWithWhereUniqueWithoutOrganizationInput = {
@@ -10016,6 +12204,22 @@ export namespace Prisma {
   export type shiftsUpdateManyWithWhereWithoutOrganizationInput = {
     where: shiftsScalarWhereInput
     data: XOR<shiftsUpdateManyMutationInput, shiftsUncheckedUpdateManyWithoutOrganizationInput>
+  }
+
+  export type duty_officersUpsertWithWhereUniqueWithoutOrganizationInput = {
+    where: duty_officersWhereUniqueInput
+    update: XOR<duty_officersUpdateWithoutOrganizationInput, duty_officersUncheckedUpdateWithoutOrganizationInput>
+    create: XOR<duty_officersCreateWithoutOrganizationInput, duty_officersUncheckedCreateWithoutOrganizationInput>
+  }
+
+  export type duty_officersUpdateWithWhereUniqueWithoutOrganizationInput = {
+    where: duty_officersWhereUniqueInput
+    data: XOR<duty_officersUpdateWithoutOrganizationInput, duty_officersUncheckedUpdateWithoutOrganizationInput>
+  }
+
+  export type duty_officersUpdateManyWithWhereWithoutOrganizationInput = {
+    where: duty_officersScalarWhereInput
+    data: XOR<duty_officersUpdateManyMutationInput, duty_officersUncheckedUpdateManyWithoutOrganizationInput>
   }
 
   export type employeesCreateWithoutPhonesInput = {
@@ -10066,11 +12270,15 @@ export namespace Prisma {
 
   export type categoriesCreateWithoutSubcategoriesInput = {
     name: string
+    organizations?: organizationsCreateNestedManyWithoutCategoryInput
+    duty_officers?: duty_officersCreateNestedManyWithoutCategoryInput
   }
 
   export type categoriesUncheckedCreateWithoutSubcategoriesInput = {
     id?: number
     name: string
+    organizations?: organizationsUncheckedCreateNestedManyWithoutCategoryInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type categoriesCreateOrConnectWithoutSubcategoriesInput = {
@@ -10080,15 +12288,19 @@ export namespace Prisma {
 
   export type organizationsCreateWithoutSubcategoryInput = {
     name: string
+    category: categoriesCreateNestedOneWithoutOrganizationsInput
     employees?: employeesCreateNestedManyWithoutOrganizationInput
     shifts?: shiftsCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersCreateNestedManyWithoutOrganizationInput
   }
 
   export type organizationsUncheckedCreateWithoutSubcategoryInput = {
     id?: number
     name: string
+    category_id: number
     employees?: employeesUncheckedCreateNestedManyWithoutOrganizationInput
     shifts?: shiftsUncheckedCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type organizationsCreateOrConnectWithoutSubcategoryInput = {
@@ -10098,6 +12310,31 @@ export namespace Prisma {
 
   export type organizationsCreateManySubcategoryInputEnvelope = {
     data: organizationsCreateManySubcategoryInput | organizationsCreateManySubcategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type duty_officersCreateWithoutSubcategoryInput = {
+    position: string
+    phones: string
+    category: categoriesCreateNestedOneWithoutDuty_officersInput
+    organization?: organizationsCreateNestedOneWithoutDuty_officersInput
+  }
+
+  export type duty_officersUncheckedCreateWithoutSubcategoryInput = {
+    id?: number
+    position: string
+    phones: string
+    category_id: number
+    organization_id: number
+  }
+
+  export type duty_officersCreateOrConnectWithoutSubcategoryInput = {
+    where: duty_officersWhereUniqueInput
+    create: XOR<duty_officersCreateWithoutSubcategoryInput, duty_officersUncheckedCreateWithoutSubcategoryInput>
+  }
+
+  export type duty_officersCreateManySubcategoryInputEnvelope = {
+    data: duty_officersCreateManySubcategoryInput | duty_officersCreateManySubcategoryInput[]
     skipDuplicates?: boolean
   }
 
@@ -10114,11 +12351,15 @@ export namespace Prisma {
 
   export type categoriesUpdateWithoutSubcategoriesInput = {
     name?: StringFieldUpdateOperationsInput | string
+    organizations?: organizationsUpdateManyWithoutCategoryNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutCategoryNestedInput
   }
 
   export type categoriesUncheckedUpdateWithoutSubcategoriesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    organizations?: organizationsUncheckedUpdateManyWithoutCategoryNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type organizationsUpsertWithWhereUniqueWithoutSubcategoryInput = {
@@ -10137,13 +12378,20 @@ export namespace Prisma {
     data: XOR<organizationsUpdateManyMutationInput, organizationsUncheckedUpdateManyWithoutSubcategoryInput>
   }
 
-  export type organizationsScalarWhereInput = {
-    AND?: organizationsScalarWhereInput | organizationsScalarWhereInput[]
-    OR?: organizationsScalarWhereInput[]
-    NOT?: organizationsScalarWhereInput | organizationsScalarWhereInput[]
-    id?: IntFilter<"organizations"> | number
-    name?: StringFilter<"organizations"> | string
-    subcategory_id?: IntFilter<"organizations"> | number
+  export type duty_officersUpsertWithWhereUniqueWithoutSubcategoryInput = {
+    where: duty_officersWhereUniqueInput
+    update: XOR<duty_officersUpdateWithoutSubcategoryInput, duty_officersUncheckedUpdateWithoutSubcategoryInput>
+    create: XOR<duty_officersCreateWithoutSubcategoryInput, duty_officersUncheckedCreateWithoutSubcategoryInput>
+  }
+
+  export type duty_officersUpdateWithWhereUniqueWithoutSubcategoryInput = {
+    where: duty_officersWhereUniqueInput
+    data: XOR<duty_officersUpdateWithoutSubcategoryInput, duty_officersUncheckedUpdateWithoutSubcategoryInput>
+  }
+
+  export type duty_officersUpdateManyWithWhereWithoutSubcategoryInput = {
+    where: duty_officersScalarWhereInput
+    data: XOR<duty_officersUpdateManyMutationInput, duty_officersUncheckedUpdateManyWithoutSubcategoryInput>
   }
 
   export type employeesCreateWithoutShiftsInput = {
@@ -10168,15 +12416,19 @@ export namespace Prisma {
 
   export type organizationsCreateWithoutShiftsInput = {
     name: string
-    subcategory: subcategoriesCreateNestedOneWithoutOrganizationsInput
+    subcategory?: subcategoriesCreateNestedOneWithoutOrganizationsInput
+    category: categoriesCreateNestedOneWithoutOrganizationsInput
     employees?: employeesCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersCreateNestedManyWithoutOrganizationInput
   }
 
   export type organizationsUncheckedCreateWithoutShiftsInput = {
     id?: number
     name: string
-    subcategory_id: number
+    subcategory_id?: number | null
+    category_id: number
     employees?: employeesUncheckedCreateNestedManyWithoutOrganizationInput
+    duty_officers?: duty_officersUncheckedCreateNestedManyWithoutOrganizationInput
   }
 
   export type organizationsCreateOrConnectWithoutShiftsInput = {
@@ -10223,15 +12475,153 @@ export namespace Prisma {
 
   export type organizationsUpdateWithoutShiftsInput = {
     name?: StringFieldUpdateOperationsInput | string
-    subcategory?: subcategoriesUpdateOneRequiredWithoutOrganizationsNestedInput
+    subcategory?: subcategoriesUpdateOneWithoutOrganizationsNestedInput
+    category?: categoriesUpdateOneRequiredWithoutOrganizationsNestedInput
     employees?: employeesUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutOrganizationNestedInput
   }
 
   export type organizationsUncheckedUpdateWithoutShiftsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    subcategory_id?: IntFieldUpdateOperationsInput | number
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    category_id?: IntFieldUpdateOperationsInput | number
     employees?: employeesUncheckedUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutOrganizationNestedInput
+  }
+
+  export type categoriesCreateWithoutDuty_officersInput = {
+    name: string
+    subcategories?: subcategoriesCreateNestedManyWithoutCategoryInput
+    organizations?: organizationsCreateNestedManyWithoutCategoryInput
+  }
+
+  export type categoriesUncheckedCreateWithoutDuty_officersInput = {
+    id?: number
+    name: string
+    subcategories?: subcategoriesUncheckedCreateNestedManyWithoutCategoryInput
+    organizations?: organizationsUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type categoriesCreateOrConnectWithoutDuty_officersInput = {
+    where: categoriesWhereUniqueInput
+    create: XOR<categoriesCreateWithoutDuty_officersInput, categoriesUncheckedCreateWithoutDuty_officersInput>
+  }
+
+  export type subcategoriesCreateWithoutDuty_officersInput = {
+    name: string
+    category: categoriesCreateNestedOneWithoutSubcategoriesInput
+    organizations?: organizationsCreateNestedManyWithoutSubcategoryInput
+  }
+
+  export type subcategoriesUncheckedCreateWithoutDuty_officersInput = {
+    id?: number
+    name: string
+    category_id: number
+    organizations?: organizationsUncheckedCreateNestedManyWithoutSubcategoryInput
+  }
+
+  export type subcategoriesCreateOrConnectWithoutDuty_officersInput = {
+    where: subcategoriesWhereUniqueInput
+    create: XOR<subcategoriesCreateWithoutDuty_officersInput, subcategoriesUncheckedCreateWithoutDuty_officersInput>
+  }
+
+  export type organizationsCreateWithoutDuty_officersInput = {
+    name: string
+    subcategory?: subcategoriesCreateNestedOneWithoutOrganizationsInput
+    category: categoriesCreateNestedOneWithoutOrganizationsInput
+    employees?: employeesCreateNestedManyWithoutOrganizationInput
+    shifts?: shiftsCreateNestedManyWithoutOrganizationInput
+  }
+
+  export type organizationsUncheckedCreateWithoutDuty_officersInput = {
+    id?: number
+    name: string
+    subcategory_id?: number | null
+    category_id: number
+    employees?: employeesUncheckedCreateNestedManyWithoutOrganizationInput
+    shifts?: shiftsUncheckedCreateNestedManyWithoutOrganizationInput
+  }
+
+  export type organizationsCreateOrConnectWithoutDuty_officersInput = {
+    where: organizationsWhereUniqueInput
+    create: XOR<organizationsCreateWithoutDuty_officersInput, organizationsUncheckedCreateWithoutDuty_officersInput>
+  }
+
+  export type categoriesUpsertWithoutDuty_officersInput = {
+    update: XOR<categoriesUpdateWithoutDuty_officersInput, categoriesUncheckedUpdateWithoutDuty_officersInput>
+    create: XOR<categoriesCreateWithoutDuty_officersInput, categoriesUncheckedCreateWithoutDuty_officersInput>
+    where?: categoriesWhereInput
+  }
+
+  export type categoriesUpdateToOneWithWhereWithoutDuty_officersInput = {
+    where?: categoriesWhereInput
+    data: XOR<categoriesUpdateWithoutDuty_officersInput, categoriesUncheckedUpdateWithoutDuty_officersInput>
+  }
+
+  export type categoriesUpdateWithoutDuty_officersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    subcategories?: subcategoriesUpdateManyWithoutCategoryNestedInput
+    organizations?: organizationsUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type categoriesUncheckedUpdateWithoutDuty_officersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    subcategories?: subcategoriesUncheckedUpdateManyWithoutCategoryNestedInput
+    organizations?: organizationsUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type subcategoriesUpsertWithoutDuty_officersInput = {
+    update: XOR<subcategoriesUpdateWithoutDuty_officersInput, subcategoriesUncheckedUpdateWithoutDuty_officersInput>
+    create: XOR<subcategoriesCreateWithoutDuty_officersInput, subcategoriesUncheckedCreateWithoutDuty_officersInput>
+    where?: subcategoriesWhereInput
+  }
+
+  export type subcategoriesUpdateToOneWithWhereWithoutDuty_officersInput = {
+    where?: subcategoriesWhereInput
+    data: XOR<subcategoriesUpdateWithoutDuty_officersInput, subcategoriesUncheckedUpdateWithoutDuty_officersInput>
+  }
+
+  export type subcategoriesUpdateWithoutDuty_officersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    category?: categoriesUpdateOneRequiredWithoutSubcategoriesNestedInput
+    organizations?: organizationsUpdateManyWithoutSubcategoryNestedInput
+  }
+
+  export type subcategoriesUncheckedUpdateWithoutDuty_officersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
+    organizations?: organizationsUncheckedUpdateManyWithoutSubcategoryNestedInput
+  }
+
+  export type organizationsUpsertWithoutDuty_officersInput = {
+    update: XOR<organizationsUpdateWithoutDuty_officersInput, organizationsUncheckedUpdateWithoutDuty_officersInput>
+    create: XOR<organizationsCreateWithoutDuty_officersInput, organizationsUncheckedCreateWithoutDuty_officersInput>
+    where?: organizationsWhereInput
+  }
+
+  export type organizationsUpdateToOneWithWhereWithoutDuty_officersInput = {
+    where?: organizationsWhereInput
+    data: XOR<organizationsUpdateWithoutDuty_officersInput, organizationsUncheckedUpdateWithoutDuty_officersInput>
+  }
+
+  export type organizationsUpdateWithoutDuty_officersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    subcategory?: subcategoriesUpdateOneWithoutOrganizationsNestedInput
+    category?: categoriesUpdateOneRequiredWithoutOrganizationsNestedInput
+    employees?: employeesUpdateManyWithoutOrganizationNestedInput
+    shifts?: shiftsUpdateManyWithoutOrganizationNestedInput
+  }
+
+  export type organizationsUncheckedUpdateWithoutDuty_officersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    category_id?: IntFieldUpdateOperationsInput | number
+    employees?: employeesUncheckedUpdateManyWithoutOrganizationNestedInput
+    shifts?: shiftsUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type subcategoriesCreateManyCategoryInput = {
@@ -10239,20 +12629,82 @@ export namespace Prisma {
     name: string
   }
 
+  export type organizationsCreateManyCategoryInput = {
+    id?: number
+    name: string
+    subcategory_id?: number | null
+  }
+
+  export type duty_officersCreateManyCategoryInput = {
+    id?: number
+    position: string
+    phones: string
+    subcategory_id?: number | null
+    organization_id: number
+  }
+
   export type subcategoriesUpdateWithoutCategoryInput = {
     name?: StringFieldUpdateOperationsInput | string
     organizations?: organizationsUpdateManyWithoutSubcategoryNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type subcategoriesUncheckedUpdateWithoutCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     organizations?: organizationsUncheckedUpdateManyWithoutSubcategoryNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutSubcategoryNestedInput
   }
 
   export type subcategoriesUncheckedUpdateManyWithoutCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type organizationsUpdateWithoutCategoryInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    subcategory?: subcategoriesUpdateOneWithoutOrganizationsNestedInput
+    employees?: employeesUpdateManyWithoutOrganizationNestedInput
+    shifts?: shiftsUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutOrganizationNestedInput
+  }
+
+  export type organizationsUncheckedUpdateWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    employees?: employeesUncheckedUpdateManyWithoutOrganizationNestedInput
+    shifts?: shiftsUncheckedUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutOrganizationNestedInput
+  }
+
+  export type organizationsUncheckedUpdateManyWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type duty_officersUpdateWithoutCategoryInput = {
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    subcategory?: subcategoriesUpdateOneWithoutDuty_officersNestedInput
+    organization?: organizationsUpdateOneWithoutDuty_officersNestedInput
+  }
+
+  export type duty_officersUncheckedUpdateWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    organization_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type duty_officersUncheckedUpdateManyWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+    organization_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type phonesCreateManyEmployeeInput = {
@@ -10264,8 +12716,8 @@ export namespace Prisma {
     id?: number
     organization_id: number
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
   }
 
   export type phonesUpdateWithoutEmployeeInput = {
@@ -10284,8 +12736,8 @@ export namespace Prisma {
 
   export type shiftsUpdateWithoutEmployeeInput = {
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
     organization?: organizationsUpdateOneRequiredWithoutShiftsNestedInput
   }
 
@@ -10293,16 +12745,16 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     organization_id?: IntFieldUpdateOperationsInput | number
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type shiftsUncheckedUpdateManyWithoutEmployeeInput = {
     id?: IntFieldUpdateOperationsInput | number
     organization_id?: IntFieldUpdateOperationsInput | number
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type employeesCreateManyOrganizationInput = {
@@ -10315,8 +12767,16 @@ export namespace Prisma {
     id?: number
     employee_id: number
     shift_date: Date | string
-    start_time?: Date | string | null
-    end_time?: Date | string | null
+    start_time?: string | null
+    end_time?: string | null
+  }
+
+  export type duty_officersCreateManyOrganizationInput = {
+    id?: number
+    position: string
+    phones: string
+    category_id: number
+    subcategory_id?: number | null
   }
 
   export type employeesUpdateWithoutOrganizationInput = {
@@ -10342,8 +12802,8 @@ export namespace Prisma {
 
   export type shiftsUpdateWithoutOrganizationInput = {
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
     employee?: employeesUpdateOneRequiredWithoutShiftsNestedInput
   }
 
@@ -10351,39 +12811,99 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     employee_id?: IntFieldUpdateOperationsInput | number
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type shiftsUncheckedUpdateManyWithoutOrganizationInput = {
     id?: IntFieldUpdateOperationsInput | number
     employee_id?: IntFieldUpdateOperationsInput | number
     shift_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_time?: NullableStringFieldUpdateOperationsInput | string | null
+    end_time?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type duty_officersUpdateWithoutOrganizationInput = {
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category?: categoriesUpdateOneRequiredWithoutDuty_officersNestedInput
+    subcategory?: subcategoriesUpdateOneWithoutDuty_officersNestedInput
+  }
+
+  export type duty_officersUncheckedUpdateWithoutOrganizationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type duty_officersUncheckedUpdateManyWithoutOrganizationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
+    subcategory_id?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type organizationsCreateManySubcategoryInput = {
     id?: number
     name: string
+    category_id: number
+  }
+
+  export type duty_officersCreateManySubcategoryInput = {
+    id?: number
+    position: string
+    phones: string
+    category_id: number
+    organization_id: number
   }
 
   export type organizationsUpdateWithoutSubcategoryInput = {
     name?: StringFieldUpdateOperationsInput | string
+    category?: categoriesUpdateOneRequiredWithoutOrganizationsNestedInput
     employees?: employeesUpdateManyWithoutOrganizationNestedInput
     shifts?: shiftsUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUpdateManyWithoutOrganizationNestedInput
   }
 
   export type organizationsUncheckedUpdateWithoutSubcategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
     employees?: employeesUncheckedUpdateManyWithoutOrganizationNestedInput
     shifts?: shiftsUncheckedUpdateManyWithoutOrganizationNestedInput
+    duty_officers?: duty_officersUncheckedUpdateManyWithoutOrganizationNestedInput
   }
 
   export type organizationsUncheckedUpdateManyWithoutSubcategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type duty_officersUpdateWithoutSubcategoryInput = {
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category?: categoriesUpdateOneRequiredWithoutDuty_officersNestedInput
+    organization?: organizationsUpdateOneWithoutDuty_officersNestedInput
+  }
+
+  export type duty_officersUncheckedUpdateWithoutSubcategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
+    organization_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type duty_officersUncheckedUpdateManyWithoutSubcategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: StringFieldUpdateOperationsInput | string
+    phones?: StringFieldUpdateOperationsInput | string
+    category_id?: IntFieldUpdateOperationsInput | number
+    organization_id?: IntFieldUpdateOperationsInput | number
   }
 
 
