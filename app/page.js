@@ -1,5 +1,5 @@
-function page() {
-  return <div className="text-4xl text-red-500 font-bold">random</div>;
-}   
+// компоненты основной страницы (для уникальноо контента)
 
-export default page;
+export default function Page() {
+  return null;
+}
